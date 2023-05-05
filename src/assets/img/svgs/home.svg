@@ -1,0 +1,21 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 49.02 63.02"
+>
+  <defs></defs>
+  <title>2</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <g id="Symbols">
+        <g id="Icons_Home" data-name="Icons/Home">
+          <g id="Home">
+            <path
+              id="path-1"
+              d="M24.51,0,0,25.21V59.87A3,3,0,0,0,2.88,63H17.3V47.26a2.92,2.92,0,0,1,2.88-3.15h8.65a3.09,3.09,0,0,1,2.89,3.15V63H46.13A3,3,0,0,0,49,59.87V25.21Z"
+            ></path>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

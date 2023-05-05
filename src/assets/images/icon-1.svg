@@ -1,0 +1,18 @@
+<svg id="icon_1" data-name="icon 1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="Icon">
+    <circle id="Oval" cx="10" cy="10" r="10" fill="#05a8ce"/>
+    <g id="champion_2" data-name="champion 2" transform="translate(5 5)">
+      <g id="champion">
+        <g id="Group">
+          <path id="Path" d="M0,0H1V3H0Z" transform="translate(4.5 6)" fill="#fff"/>
+          <path id="Path-2" data-name="Path" d="M1.385,4.25H.153v-.5H1.385A.518.518,0,0,0,1.9,3.233V1.018a.518.518,0,0,0-.8-.43L.305,1.2,0,.8.807.181a1.017,1.017,0,0,1,1.6.836V3.233A1.019,1.019,0,0,1,1.385,4.25Z" transform="translate(7.597 0)" fill="#fff"/>
+          <path id="Path-3" data-name="Path" d="M2.25,4.25H1.018A1.019,1.019,0,0,1,0,3.232V1.017A1.018,1.018,0,0,1,1.582.171L2.4.8l-.3.4L1.291.577A.512.512,0,0,0,1.018.5.518.518,0,0,0,.5,1.017V3.232a.518.518,0,0,0,.518.517H2.25Z" transform="translate(0 0)" fill="#fff"/>
+        </g>
+        <g id="Group-2" data-name="Group" transform="translate(2)">
+          <path id="Path-4" data-name="Path" d="M.5,0H5a.5.5,0,0,1,.5.5V1H0V.5A.5.5,0,0,1,.5,0Z" transform="translate(0.25 9)" fill="#57c5de"/>
+          <path id="Path-5" data-name="Path" d="M.75,0H0V3.25a3,3,0,0,0,6,0V0Z" fill="#57c5de"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

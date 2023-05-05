@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27" height="17" viewBox="0 0 27 17">
+  <g id="League_category" data-name="League category" transform="translate(0.5 0.5)">
+    <g id="Group_27" data-name="Group 27">
+      <g id="Group_25" data-name="Group 25">
+        <path id="Rectangle" d="M1.2,16A1.16,1.16,0,0,1,0,14.882V1.118A1.16,1.16,0,0,1,1.2,0H24.8A1.161,1.161,0,0,1,26,1.118V14.882A1.161,1.161,0,0,1,24.8,16Z" fill="none" stroke="#fff" stroke-width="1"/>
+        <g id="Group_10" data-name="Group 10" transform="translate(16.138 1.778)">
+          <path id="Rectangle_Copy_18" data-name="Rectangle Copy 18" d="M.262,3A.243.243,0,0,1,0,2.78V.22A.243.243,0,0,1,.262,0H7.737A.244.244,0,0,1,8,.22V2.78A.244.244,0,0,1,7.737,3Z" transform="translate(0)" fill="none" stroke="#fff" stroke-width="0.5"/>
+          <path id="Rectangle_Copy_22" data-name="Rectangle Copy 22" d="M.262,3A.243.243,0,0,1,0,2.78V.22A.243.243,0,0,1,.262,0H7.737A.244.244,0,0,1,8,.22V2.78A.244.244,0,0,1,7.737,3Z" transform="translate(0 4.782)" fill="none" stroke="#fff" stroke-width="0.5"/>
+          <path id="Rectangle_Copy_25" data-name="Rectangle Copy 25" d="M.262,3A.243.243,0,0,1,0,2.78V.22A.243.243,0,0,1,.262,0H7.737A.244.244,0,0,1,8,.22V2.78A.244.244,0,0,1,7.737,3Z" transform="translate(0 9.564)" fill="none" stroke="#fff" stroke-width="0.5"/>
+        </g>
+        <g id="Group_10_Copy" data-name="Group 10 Copy" transform="translate(1.793 1.778)">
+          <path id="Rectangle_Copy_18-2" data-name="Rectangle Copy 18" d="M.262,3A.243.243,0,0,1,0,2.78V.22A.243.243,0,0,1,.262,0H7.737A.244.244,0,0,1,8,.22V2.78A.244.244,0,0,1,7.737,3Z" transform="translate(0)" fill="none" stroke="#fff" stroke-width="0.5"/>
+          <path id="Rectangle_Copy_22-2" data-name="Rectangle Copy 22" d="M.262,3A.243.243,0,0,1,0,2.78V.22A.243.243,0,0,1,.262,0H7.737A.244.244,0,0,1,8,.22V2.78A.244.244,0,0,1,7.737,3Z" transform="translate(0 4.782)" fill="none" stroke="#fff" stroke-width="0.5"/>
+          <path id="Rectangle_Copy_25-2" data-name="Rectangle Copy 25" d="M.262,3A.243.243,0,0,1,0,2.78V.22A.243.243,0,0,1,.262,0H7.737A.244.244,0,0,1,8,.22V2.78A.244.244,0,0,1,7.737,3Z" transform="translate(0 9.564)" fill="none" stroke="#fff" stroke-width="0.5"/>
+        </g>
+      </g>
+      <g id="Rectangle-2" data-name="Rectangle" transform="translate(12.5 11)" fill="#fff" stroke="#fff" stroke-miterlimit="10" stroke-width="1">
+        <rect width="1" height="5" rx="0.5" stroke="none"/>
+        <rect x="0.5" y="0.5" height="4" fill="none"/>
+      </g>
+      <g id="Rectangle_Copy_26" data-name="Rectangle Copy 26" transform="translate(12.5)" fill="#fff" stroke="#fff" stroke-miterlimit="10" stroke-width="1">
+        <rect width="1" height="5" rx="0.5" stroke="none"/>
+        <rect x="0.5" y="0.5" height="4" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>
