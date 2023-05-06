@@ -384,7 +384,6 @@ button {
 
 /**** side-overlay ****/
 .side-overlay {
-
     width: 0;
     height: 0;
     position: fixed;
@@ -395,12 +394,16 @@ button {
     transition: opacity 0.3s ease;
     background-color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
+}
 
+@media (min-width: 1300px) {
+    .side-overlay {
+        display: none;
+    }
 }
 
 .panel-responsive-item.active .side-overlay,
 .side-overlay.active {
-
     width: 100%;
     height: 100%;
     opacity: 1;
@@ -2119,6 +2122,13 @@ button {
     left: 1rem
 }
 
+
+.leagues-results-area .slider-container .slider-arrow.leag-swip-arrow{
+    top: 5px;
+    background-color: #fff;
+    z-index: 3;
+}
+
 .leagues-results-area .slider-container .slider-arrow.prev-btn {
     right: 1rem
 }
@@ -2555,6 +2565,21 @@ button {
     --dim: 40px;
 }
 
+.comp-title{
+    max-width: calc(100% - 30px);
+}
+
+.comp-title h5{
+    font-size: 15px !important;
+}
+
+.comp-icon {
+    width: 30px !important;
+    height: 20px !important;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
 .slider-arrows .slider-arrow {
     cursor: pointer;
     display: flex;
@@ -2868,7 +2893,6 @@ button {
 
 .widget__item-card .widget__item-image {
     height: 220px;
-
     position: relative;
 }
 
@@ -3041,13 +3065,11 @@ button {
 }
 
 .custom-modal .modal-content {
-
     border-radius: var(--border-r-3);
     border: none;
 }
 
 .custom-modal .modal-body {
-
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
@@ -3060,11 +3082,10 @@ button {
 
 @media(min-width:992px) {
 
-    .custom-modal .btn__close {
-
+    .btn__close {
         position: absolute;
-        left: calc(-34px / 2);
-        top: calc(-34px / 2);
+        left: calc(-60px / 2);
+        top: calc(-30px / 2);
         width: 34px;
         height: 34px;
         background-color: #FCFCFD;
@@ -3085,7 +3106,7 @@ button {
         vertical-align: middle;
     }
 
-    .custom-modal .btn__close:hover {
+    .btn__close:hover {
 
         background-color: var(--clr-1);
         color: #fff
@@ -3102,7 +3123,7 @@ button {
 
     }
 
-    .custom-modal .btn__close {
+    .btn__close {
 
         position: absolute;
         height: 40px;
@@ -3118,7 +3139,7 @@ button {
         z-index: 10;
     }
 
-    .custom-modal .btn__close:hover {
+    .btn__close:hover {
 
         color: var(--clr-1);
     }
@@ -3139,11 +3160,48 @@ button {
 
 
 /** mactch-page modals **/
+.custom-bet-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1060;
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    padding: 20px 0;
+}
+
+.custom-scorer{
+    display: block !important;
+    transform: translate(0) !important;
+    z-index: 1060 !important;
+}
+
+.model-over-lay{
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.custom-bet-modal .modal-body{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
 .bet-matches-modal .modal-dialog {
     max-width: 900px;
+    min-height: 0 !important;
     margin-right: auto;
     margin-left: auto;
-    padding: 0 .5rem;
+    padding: 0 1rem;
+    background-color: #fff;
+    border-radius: var(--border-r-3);   
 }
 
 .bet-matches-modal .bet-matches-area>*:not(:last-child) {
@@ -3188,14 +3246,12 @@ button {
 }
 
 .bet-matches-modal .bet-matches-area .bet-row .team-item img {
-
     width: 65px;
     height: 65px;
     display: block;
 }
 
 .bet-matches-modal .bet-matches-area .bet-row .team-item .team-name {
-
     display: block;
     font-size: 16px;
     font-weight: bold;
@@ -3204,7 +3260,6 @@ button {
 }
 
 .bet-matches-modal .bet-matches-area .bet-row .bet-wrap {
-
     width: 100%;
     display: flex;
     align-items: center;
@@ -3221,9 +3276,7 @@ button {
 }
 
 .bet-matches-modal .bet-matches-area .bet-row .bet-wrap .bet-col>*:not(:last-child) {
-
     margin-bottom: 1rem;
-
 }
 
 .bet-matches-modal .bet-matches-area .bet-row .bet-wrap .bet-col .order-no,
@@ -3239,7 +3292,6 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .bet-matches-modal .bet-matches-area .bet-row .bet-wrap .bet-col .history-items .history-item {

@@ -3,14 +3,18 @@ import barcelonaLogo from "../assets/img/Barcelona.svg";
 import pointsImg from "../assets/img/Points.svg";
 import coinImg from "../assets/img/Coin.svg";
 import avatarPerson from "../assets/img/avatar-person.svg";
+import { useSelector } from "react-redux";
 
 const Aside = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [moreNav, setMoreNav] = useState(false);
   const [moreTeam, setMoreTeam] = useState(false);
-
+  const { openAside } = useSelector((state) => state.app);
+  
   return (
-    <aside className="main-sidebar  panel-responsive-item">
+    <aside
+      className={`main-sidebar panel-responsive-item ${openAside && "active"}`}
+    >
       <div className="scroll-sidebar">
         <div className="sidebar-head">
           <a className="head-btn settings-btn" href="#">

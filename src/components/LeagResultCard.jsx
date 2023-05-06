@@ -46,9 +46,7 @@ const LeagResultCard = () => {
             <li className="list-item">
               <div className="item-val w-icon">
                 <span>
-                <span>
                   <img src={trophy} alt="" />
-                </span>
                 </span>
                 ليفربول
               </div>

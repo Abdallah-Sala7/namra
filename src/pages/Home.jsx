@@ -9,13 +9,25 @@ import SwiperNav from "../components/SwiperNav";
 import MatchesTabs from "../components/MatchesTabs";
 import MatchCard from "../components/MatchCard";
 
-import cardOne from "../assets/images/card-1.png";
 import TopLeagues from "../components/TopLeagues";
 import TopMatcheCard from "../components/TopMatcheCard";
 import TopMatchHead from "../components/TopMatchHead";
 import MatchesLeague from "../components/MatchesLeague";
+import BetMatches from "../components/BetMatches";
+import ChooseScorers from "../components/ChooseScorers";
+import { useSelector } from "react-redux";
+import { useGetCompetitionQuery } from "../app/server/competitionApi";
+import { useGetGameQuery } from "../app/server/gameApi";
 
 const Home = () => {
+  const { openModal } = useSelector((state) => state.app);
+  const { data: competition, error, isLoading } = useGetCompetitionQuery();
+  const {
+    data: teamsData,
+    error: teamErr,
+    isLoading: teamLoading,
+  } = useGetGameQuery();
+
   return (
     <>
       <section className="section-style competitions-section">
@@ -44,22 +56,15 @@ const Home = () => {
                     }}
                     className="mySwiper"
                   >
-                    <SwiperSlide>
-                      <CompetitionCard leagImg={cardOne} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CompetitionCard leagImg={cardOne} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CompetitionCard leagImg={cardOne} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CompetitionCard leagImg={cardOne} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <CompetitionCard leagImg={cardOne} />
-                    </SwiperSlide>
-
+                    {isLoading ? (
+                      <div>loading...</div>
+                    ) : (
+                      competition["hydra:member"].map((item, index) => (
+                        <SwiperSlide key={index}>
+                          <CompetitionCard item={item} />
+                        </SwiperSlide>
+                      ))
+                    )}
                     <div className="flex-head swiper-head">
                       <div className="main-title">
                         <h1 className="title-text">جولة في المسابقات</h1>
@@ -123,9 +128,13 @@ const Home = () => {
                         </div>
 
                         <div className="box-body">
-                          <MatchCard />
-                          <MatchCard />
-                          <MatchCard />
+                          {teamLoading ? (
+                            <div>loading...</div>
+                          ) : (
+                            teamsData["hydra:member"].map((item, index) => (
+                              <MatchCard key={index} item={item} />
+                            ))
+                          )}
                         </div>
                       </div>
                     </div>
@@ -174,6 +183,12 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {openModal && (
+        <section className="bet">
+          {openModal === "betModel" ? <BetMatches /> : <ChooseScorers />}
+        </section>
+      )}
     </>
   );
 };

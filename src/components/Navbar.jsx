@@ -1,13 +1,20 @@
 import React from "react";
-import namraLogo from '../assets/img/logonamra10.png'
+import namraLogo from "../assets/img/logonamra10.png";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch, useSelector } from "react-redux";
+import { setOpenAside } from "../app/reducers/appSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const { openAside } = useSelector((state) => state.app);
   return (
     <header className="top-nav">
       <div className="nav-content h-100">
-        <div className="nav-toggler">
+        <div
+          className={`nav-toggler ${openAside && "opened"}`}
+          onClick={() => dispatch(setOpenAside())}
+        >
           <svg width="100" height="100" viewBox="0 0 100 100">
             <path
               className="line line1"
@@ -23,17 +30,13 @@ const Navbar = () => {
 
         <div className="nav-logo">
           <a href="index.html">
-            <img
-              className="img-fluid main-logo"
-              src={namraLogo}
-              alt="Namra"
-            />
+            <img className="img-fluid main-logo" src={namraLogo} alt="Namra" />
           </a>
         </div>
 
         <div className="nav-actions">
           <a className="head-btn notify-btn" href="#">
-          <FontAwesomeIcon icon={faBell} />
+            <FontAwesomeIcon icon={faBell} />
             <span className="counter">6</span>
           </a>
         </div>

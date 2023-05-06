@@ -4,10 +4,17 @@ import MatchesLeague from "../components/MatchesLeague";
 import MatchesTabs from "../components/MatchesTabs";
 import LeagResultCard from "../components/LeagResultCard";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import LeagSwipNav from "../components/LeagSwipNav";
+import { useGetGameQuery } from "../app/server/gameApi";
 
 const Matches = () => {
+  const { data: teamsData, isLoading, isError } = useGetGameQuery();
+
+  if (isLoading) return <div>loading...</div>;
+  if (isError) return <div>error...</div>;
+
   return (
     <section className="section-style matches-section">
       <div className="container">
@@ -69,7 +76,9 @@ const Matches = () => {
                         </div>
 
                         <div className="box-body">
-                          <MatchCard />
+                          {teamsData["hydra:member"].map((item, index) => (
+                            <MatchCard key={index} item={item} />
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -82,18 +91,26 @@ const Matches = () => {
               <div className="side-cols">
                 <div className="leagues-results-area">
                   <div className="slider-container leagues-results-container">
-                    <div className="swiper leagues-results-slider">
-                      <div className="swiper-wrapper">
+                    <Swiper
+                      slidesPerView={1}
+                      spaceBetween={10}
+                      modules={[Navigation]}
+                      className="leag-swiper"
+                    >
+                      <SwiperSlide>
                         <LeagResultCard />
-                      </div>
-                    </div>
+                      </SwiperSlide>
 
-                    <button className="slider-arrow prev-btn" type="button">
-                      <FontAwesomeIcon icon={faArrowRight} />
-                    </button>
-                    <button className="slider-arrow next-btn" type="button">
-                      <FontAwesomeIcon icon={faArrowLeft} />
-                    </button>
+                      <SwiperSlide>
+                        <LeagResultCard />
+                      </SwiperSlide>
+
+                      <SwiperSlide>
+                        <LeagResultCard />
+                      </SwiperSlide>
+
+                      <LeagSwipNav />
+                    </Swiper>
                   </div>
                 </div>
 
