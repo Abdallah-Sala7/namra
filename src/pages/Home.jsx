@@ -18,6 +18,7 @@ import ChooseScorers from "../components/ChooseScorers";
 import { useSelector } from "react-redux";
 import { useGetCompetitionQuery } from "../app/server/competitionApi";
 import { useGetGameQuery } from "../app/server/gameApi";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { openModal } = useSelector((state) => state.app);
@@ -58,6 +59,8 @@ const Home = () => {
                   >
                     {isLoading ? (
                       <div>loading...</div>
+                    ) : error ? (
+                      <p>error ....</p>
                     ) : (
                       competition["hydra:member"].map((item, index) => (
                         <SwiperSlide key={index}>
@@ -90,7 +93,7 @@ const Home = () => {
                     <h1 className="title-text">المباريات</h1>
                   </div>
 
-                  <a className="filter-btn more-btn" href="matches.html">
+                  <Link className="filter-btn more-btn" to="matches">
                     المزيد
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +115,7 @@ const Home = () => {
                         />
                       </g>
                     </svg>
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="matches-tabs-area tabs-content-area">
@@ -129,7 +132,9 @@ const Home = () => {
 
                         <div className="box-body">
                           {teamLoading ? (
-                            <div>loading...</div>
+                            <p>loading...</p>
+                          ) : teamErr ? (
+                            <p>error...</p>
                           ) : (
                             teamsData["hydra:member"].map((item, index) => (
                               <MatchCard key={index} item={item} />

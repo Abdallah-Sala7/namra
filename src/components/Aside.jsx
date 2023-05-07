@@ -4,6 +4,7 @@ import pointsImg from "../assets/img/Points.svg";
 import coinImg from "../assets/img/Coin.svg";
 import avatarPerson from "../assets/img/avatar-person.svg";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const Aside = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -111,7 +112,7 @@ const Aside = () => {
         <div className="slidebar-nav">
           <ul className={`slidebar-links more-list ${moreNav ? "active" : ""}`}>
             <li className="list-item">
-              <a className="item-link active" href="index.html">
+              <NavLink className="item-link" to="/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 49.02 63.02"
@@ -134,8 +135,9 @@ const Aside = () => {
                   </g>
                 </svg>
                 <span>الصفحة الرئيسية</span>
-              </a>
+              </NavLink>
             </li>
+
             <li className="list-item">
               <a className="item-link " href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

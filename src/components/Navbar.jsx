@@ -4,6 +4,7 @@ import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenAside } from "../app/reducers/appSlice";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -29,9 +30,9 @@ const Navbar = () => {
         </div>
 
         <div className="nav-logo">
-          <a href="index.html">
+          <Link to="/">
             <img className="img-fluid main-logo" src={namraLogo} alt="Namra" />
-          </a>
+          </Link>
         </div>
 
         <div className="nav-actions">
