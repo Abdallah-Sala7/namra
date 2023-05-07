@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import barca from "../assets/img/Barcelona.svg";
 
-const WinningTeam = () => {
+const WinningTeamCards = ({ betData }) => {
   const [active, setActive] = useState("");
+
   return (
     <>
       <div
@@ -14,7 +15,7 @@ const WinningTeam = () => {
         }}
       >
         <img className="img-fluid" src={barca} alt="teamName" />
-        <span className="team-name">برشلونة</span>
+        <span className="team-name">{betData.hostTeam.name}</span>
       </div>
 
       <div
@@ -26,10 +27,10 @@ const WinningTeam = () => {
         }}
       >
         <img className="img-fluid" src={barca} alt="teamName" />
-        <span className="team-name">برشلونة</span>
+        <span className="team-name">{betData.guestTeam.name}</span>
       </div>
     </>
   );
 };
 
-export default WinningTeam;
+export default WinningTeamCards;

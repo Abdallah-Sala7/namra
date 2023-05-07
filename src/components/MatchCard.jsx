@@ -6,6 +6,7 @@ import { setOpenModal } from "../app/reducers/appSlice";
 import points from "../assets/img/Points.svg";
 import barca from "../assets/img/Barcelona.svg";
 import clubLogo from "../assets/img/club_logo.png";
+import { setBetData } from "../app/reducers/betSlice";
 
 const MatchCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -30,6 +31,11 @@ const MatchCard = ({ item }) => {
   const standardTime = date.toLocaleString("ar-EG", options);
 
   let status = item.status;
+
+  const handleOpenModal = () => {
+    dispatch(setOpenModal("betModel"));
+    dispatch(setBetData(item));
+  };
 
   return (
     <div className="box-item">
@@ -109,9 +115,7 @@ const MatchCard = ({ item }) => {
           <button
             type="button"
             className="bet-matches"
-            onClick={() => {
-              dispatch(setOpenModal("betModel"));
-            }}
+            onClick={handleOpenModal}
           >
             راهن على المباريات
           </button>

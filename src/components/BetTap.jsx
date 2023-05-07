@@ -5,7 +5,7 @@ import { setActiveTap } from "../app/reducers/betSlice";
 const BetTap = () => {
   const dispatch = useDispatch();
 
-  const { activeTap } = useSelector((state) => state.betTap);
+  const { activeTap } = useSelector((state) => state.betModal);
 
   const handleTap = (e, tap) => {
     e.preventDefault();

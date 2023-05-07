@@ -3477,8 +3477,7 @@ button {
 }
 
 .bet-matches-modal .bet-matches-area .bet-result-box .result-items>.team-item .team-name {
-
-    font-size: 16px;
+    font-size: 14px;
     color: var(--clr-txt2);
     font-weight: bold;
     display: block;

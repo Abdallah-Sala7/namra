@@ -4,12 +4,11 @@ import point from "../assets/images/point.svg";
 import trophy from "../assets/img/trophy.svg";
 
 const CompetitionCard = ({ item }) => {
-  console.log(item.type);
   return (
     <div className="swiper-slide">
       <article className="widget__item-card widget-1">
         <div className="widget__item-image">
-          <img src={item.logo} alt="" />
+          <img src={`https://quiet-falls-97256.herokuapp.com/${item.logo}`} alt="" />
         </div>
 
         <div className="widget__item-content d-flex flex-column p-2 p-lg-3">

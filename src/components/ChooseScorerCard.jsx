@@ -3,7 +3,7 @@ import { setChooseScorer } from "../app/reducers/betSlice";
 
 const ChooseScorerCard = ({ scorerName, scorerTeam, scorerImg }) => {
   const dispatch = useDispatch();
-  const { chooseScorer } = useSelector((state) => state.betTap);
+  const { chooseScorer } = useSelector((state) => state.betModal);
 
   const handleChooseScorer = () => {
     dispatch(setChooseScorer(scorerName));
