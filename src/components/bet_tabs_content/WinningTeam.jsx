@@ -3,21 +3,76 @@ import BetCurrency from "../BetCurrency";
 import BetInfo from "../BetInfo";
 import BetBtnsActions from "../BetBtnsActions";
 import { useSelector } from "react-redux";
+import { useCreatePredictMutation } from "../../app/server/predictsApi";
+import { useEffect, useState } from "react";
 
 const WinningTeam = () => {
   const { betData } = useSelector((state) => state.betModal);
+  const [postWiningTeam, { error, isLoading, data, isSuccess }] =
+    useCreatePredictMutation();
+
+  const [coinCount, setCoinCount] = useState(1);
+  const [winingTeamValue, setWiningTeamValue] = useState("");
+  const [oddsTeamSelcte, setOddsTeamSelcte] = useState(0);
+
+  const guestOdd = betData.guestOdd;
+  const hostOdd = betData.hostOdd;
+  const predictionLevel = 3;
+
+  const getCoinsValue = (value) => {
+    setCoinCount(value);
+  };
+
+  const getWiningTeamValue = (value, oddSelcte) => {
+    setWiningTeamValue(value);
+    setOddsTeamSelcte(oddSelcte);
+  };
+
+  const pointsToWin = Math.round(
+    ((1 / (hostOdd * guestOdd)) * oddsTeamSelcte * coinCount) / predictionLevel
+  );
+  const coinsToWin = Math.round(
+    ((1 / (hostOdd * guestOdd)) * oddsTeamSelcte * coinCount) / predictionLevel +
+      oddsTeamSelcte
+  );
+
+  function handleWinngTeam() {
+    if (!winingTeamValue.length < 1) {
+      postWiningTeam({
+        type: "WINNER_TEAM",
+        winningTeam: winingTeamValue,
+        coins: coinCount,
+        pointsToWin,
+        coinsToWin,
+        pointsToLose: 0,
+      });
+    } else {
+      alert("Please select a team");
+    }
+  }
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log(data);
+    } else if (error) {
+      console.log(error);
+    } else if (isLoading) {
+      console.log("loading");
+    }
+  }, [handleWinngTeam]);
 
   return (
     <>
       <div className="bet-types-row tabs-content-area">
         <div className="tabs-contents">
-          <div
-            className={`tab-content tab1 active`}
-          >
+          <div className={`tab-content tab1 active`}>
             <div className="bet-result-box">
               <p className="result-title">الفريق الفائز</p>
               <div className="result-items active_toggle_items only_active_item">
-                <WinningTeamCards betData={betData} />
+                <WinningTeamCards
+                  betData={betData}
+                  getWiningTeamValue={getWiningTeamValue}
+                />
               </div>
             </div>
           </div>
@@ -25,15 +80,19 @@ const WinningTeam = () => {
       </div>
 
       <div className="bet-currency">
-        <BetCurrency />
+        <BetCurrency
+          getCoinsValue={(value) => {
+            getCoinsValue(value);
+          }}
+        />
       </div>
 
       <div className="bet-info-row ">
-        <BetInfo />
+        <BetInfo pointsToWin={pointsToWin} coinsToWin={coinsToWin} />
       </div>
 
       <div className="footer-btns">
-        <BetBtnsActions />
+        <BetBtnsActions handleClick={handleWinngTeam} />
       </div>
     </>
   );

@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
 import barca from "../assets/img/Barcelona.svg";
 import { setOpenModal } from "../app/reducers/appSlice";
+import DefaultImg from "./DefaultImg";
 
-const ScorersTap = ({betData}) => {
+const ScorersTap = ({ betData }) => {
   const dispatch = useDispatch();
 
   return (
@@ -17,7 +18,11 @@ const ScorersTap = ({betData}) => {
             dispatch(setOpenModal("ChooseScorers"));
           }}
         >
-          <img className="img-fluid" src={barca} alt="teamName" />
+          <DefaultImg
+            src={betData.hostTeam.logo}
+            imgClass={"img-fluid"}
+            alt={betData.hostTeam.name}
+          />
           <span className="team-name">{betData.hostTeam.name}</span>
         </div>
         <div
@@ -28,7 +33,11 @@ const ScorersTap = ({betData}) => {
             dispatch(setOpenModal("ChooseScorers"));
           }}
         >
-          <img className="img-fluid" src={barca} alt="teamName" />
+          <DefaultImg
+            src={betData.guestTeam.logo}
+            imgClass={"img-fluid"}
+            alt={betData.guestTeam.name}
+          />
           <span className="team-name">{betData.guestTeam.name}</span>
         </div>
       </div>

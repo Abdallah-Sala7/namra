@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   openAside: false,
   openModal: false,
+  matchesTab:"all-matches"
 }
 
 export const appSlice = createSlice({
@@ -15,9 +16,13 @@ export const appSlice = createSlice({
 
     setOpenModal:(state, action) => {
       state.openModal = action.payload;
+    },
+
+    setMatchesTab:(state, action) => {
+      state.matchesTab = action.payload;
     }
   }
 })
 
-export const {setOpenAside, setOpenModal} = appSlice.actions;
+export const {setOpenAside, setOpenModal, setMatchesTab} = appSlice.actions;
 export default appSlice.reducer;

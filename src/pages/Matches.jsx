@@ -11,10 +11,23 @@ import { useGetGameQuery } from "../app/server/gameApi";
 import { useSelector } from "react-redux";
 import BetMatches from "../components/BetMatches";
 import ChooseScorers from "../components/ChooseScorers";
+import { useEffect, useState } from "react";
+import DateRange from "../components/DateRange";
 
 const Matches = () => {
-  const { openModal } = useSelector((state) => state.app);
-  const { data: teamsData, isLoading, isError } = useGetGameQuery();
+  const { openModal, matchesTab } = useSelector((state) => state.app);
+  const { data: teamsData, isLoading, isError, isSuccess } = useGetGameQuery();
+
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      const filterData = teamsData["hydra:member"].filter((item) =>
+        matchesTab === "all-matches" ? item : item.predict === true
+      );
+      setMatches(filterData);
+    }
+  }, [matchesTab, teamsData]);
 
   return (
     <>
@@ -32,48 +45,7 @@ const Matches = () => {
                     <div className="tab-content all-matches active">
                       <div className="inside-tabs-area tabs-content-area">
                         <div className="scroll-list draggable-list">
-                          <div className="tabs-list">
-                            <a
-                              className="tab-btn active"
-                              href="#"
-                              data-target=""
-                            >
-                              اليوم
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 16
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 17
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 19
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 19
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 20
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 21
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 17
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 19
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 19
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 20
-                            </a>
-                            <a className="tab-btn" href="#" data-target="">
-                              أبريل 21
-                            </a>
-                          </div>
+                          <DateRange />
                         </div>
 
                         <div className="box-wrap">
@@ -87,7 +59,7 @@ const Matches = () => {
                             ) : isLoading ? (
                               <div>loading ....</div>
                             ) : (
-                              teamsData["hydra:member"].map((item, index) => (
+                              matches.map((item, index) => (
                                 <MatchCard key={index} item={item} />
                               ))
                             )}

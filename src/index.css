@@ -1263,7 +1263,7 @@ button {
 }
 
 .matches-area .matches-tabs-area .tabs-list {
-
+    border-bottom: 3px solid var(--clr-txt2);
     display: flex;
     flex-wrap: nowrap;
 
@@ -1285,6 +1285,7 @@ button {
     color: var(--clr-txt2);
     font-weight: bold;
     position: relative;
+    border: none !important;
 
 }
 
@@ -4129,7 +4130,6 @@ button {
     text-align: center;
     transition: all .3s ease;
     position: relative;
-    width: 60px;
 }
 
 .single-match-area .bet-types-boxes .bet-box .bet-result .team-item img {

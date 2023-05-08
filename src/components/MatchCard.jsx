@@ -1,19 +1,14 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { setOpenModal } from "../app/reducers/appSlice";
 
 import points from "../assets/img/Points.svg";
 import barca from "../assets/img/Barcelona.svg";
-import clubLogo from "../assets/img/club_logo.png";
 import { setBetData } from "../app/reducers/betSlice";
+import DefaultImg from "./DefaultImg";
 
 const MatchCard = ({ item }) => {
   const dispatch = useDispatch();
-  const [isValidSrc, setIsValidSrc] = useState({
-    first: true,
-    second: true,
-  });
 
   const dateString = item.dateTimeGame;
   const date = new Date(dateString);
@@ -66,16 +61,11 @@ const MatchCard = ({ item }) => {
       <div className="item-middle">
         <div className="team-info">
           <span className="team-name">{item.hostTeam.name}</span>
-          {isValidSrc.first ? (
-            <img
-              className="img-fluid"
-              src={"barca"}
-              onError={() => setIsValidSrc({ ...isValidSrc, first: false })}
-              alt="teamName"
-            />
-          ) : (
-            <img src={clubLogo} alt="club logo placholder" />
-          )}
+          <DefaultImg
+            src={item.hostTeam.logo}
+            imgClass="img-fluid"
+            alt="teamName"
+          />
         </div>
 
         {status === "live" || status === "FT" || status === "break" ? (
@@ -88,16 +78,11 @@ const MatchCard = ({ item }) => {
         )}
 
         <div className="team-info">
-          {isValidSrc.second ? (
-            <img
-              className="img-fluid"
-              src={barca}
-              onError={() => setIsValidSrc({ ...isValidSrc, second: false })}
-              alt="teamName"
-            />
-          ) : (
-            <img src={clubLogo} alt="club logo placholder" />
-          )}
+          <DefaultImg
+            src={item.guestTeam.logo}
+            imgClass="img-fluid"
+            alt="teamName"
+          />
           <span className="team-name">{item.guestTeam.name}</span>
         </div>
       </div>

@@ -7,6 +7,8 @@ import { store } from './app/store';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Matches from './pages/Matches';
+import LoginLayout from './pages/LoginLayout';
+import Login from './components/Login';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,13 @@ const router = createBrowserRouter([
     children:[
       {index:true, element: <Home />},
       {path:'matches', element: <Matches />}
+    ]
+  },
+  {
+    path:"/login",
+    element: <LoginLayout />,
+    children:[
+      {index:true, element: <Login />},
     ]
   }
 ])

@@ -1,32 +1,46 @@
 import React, { useState } from "react";
 import barca from "../assets/img/Barcelona.svg";
+import DefaultImg from "./DefaultImg";
 
-const WinningTeamCards = ({ betData }) => {
+const WinningTeamCards = ({ betData, getWiningTeamValue }) => {
   const [active, setActive] = useState("");
+
+  const handleSelectTeam = (teamName, odd) => {
+    setActive(teamName);
+    getWiningTeamValue(teamName, odd);
+  };
 
   return (
     <>
       <div
         className={`team-item active_toggle_item ${
-          active === "host" && "active"
+          active === betData.hostTeam.name && "active"
         }`}
         onClick={() => {
-          setActive("host");
+          handleSelectTeam(betData.hostTeam.name, betData.hostOdd);
         }}
       >
-        <img className="img-fluid" src={barca} alt="teamName" />
+        <DefaultImg
+          src={betData.hostTeam.logo}
+          imgClass={"img-fluid"}
+          alt="teamName"
+        />
         <span className="team-name">{betData.hostTeam.name}</span>
       </div>
 
       <div
         className={`team-item active_toggle_item ${
-          active === "gest" && "active"
+          active === betData.guestTeam.name && "active"
         }`}
         onClick={() => {
-          setActive("gest");
+          handleSelectTeam(betData.guestTeam.name, betData.guestOdd);
         }}
       >
-        <img className="img-fluid" src={barca} alt="teamName" />
+        <DefaultImg
+          src={betData.guestTeam.logo}
+          imgClass={"img-fluid"}
+          alt="teamName"
+        />
         <span className="team-name">{betData.guestTeam.name}</span>
       </div>
     </>

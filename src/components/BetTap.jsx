@@ -9,25 +9,65 @@ const BetTap = () => {
 
   const handleTap = (e, tap) => {
     e.preventDefault();
-    dispatch(setActiveTap(tap))
+    dispatch(setActiveTap(tap));
   };
 
   return (
     <div className="tabs-list">
-      <a className={`tab-btn ${activeTap === 'tab1' && 'active'}`} href="#" onClick={(e)=> handleTap(e, "tab1")}>
+      <a
+        className={`tab-btn ${activeTap === "tab1" && "active"}`}
+        href="#"
+        onClick={(e) => handleTap(e, "tab1")}
+      >
         الفريق الفائز
       </a>
-      <a className={`tab-btn ${activeTap === 'tab2' && 'active'}`} href="#" onClick={(e)=> handleTap(e, "tab2")}>
+      
+      <a
+        className={`tab-btn ${activeTap === "tab2" && "active"}`}
+        href="#"
+        onClick={(e) => handleTap(e, "tab2")}
+      >
         نتيجة المبارات
       </a>
-      <a className={`tab-btn ${activeTap === 'tab3' && 'active'}`} href="#" onClick={(e)=> handleTap(e, "tab3")}>
+
+      <a
+        className={`tab-btn ${activeTap === "tab3" && "active"}`}
+        href="#"
+        onClick={(e) => handleTap(e, "tab3")}
+      >
         فارق الأهداف
       </a>
-      <a className={`tab-btn ${activeTap === 'tab4' && 'active'}`} href="#" onClick={(e)=> handleTap(e, "tab4")}>
+
+      <a
+        className={`tab-btn ${activeTap === "tab4" && "active"}`}
+        href="#"
+        onClick={(e) => handleTap(e, "tab4")}
+      >
         الهدافين
       </a>
-      <a className={`tab-btn ${activeTap === 'tab5' && 'active'}`} href="#" onClick={(e)=> handleTap(e, "tab5")}>
+
+      <a
+        className={`tab-btn ${activeTap === "tab5" && "active"}`}
+        href="#"
+        onClick={(e) => handleTap(e, "tab5")}
+      >
         السباق للتهديف
+      </a>
+
+      <a
+        className={`tab-btn ${activeTap === "tab6" && "active"}`}
+        href="#"
+        onClick={(e) => handleTap(e, "tab6")}
+      >
+        نتيجة الشوط الأول
+      </a>
+
+      <a
+        className={`tab-btn ${activeTap === "tab7" && "active"}`}
+        href="#"
+        onClick={(e) => handleTap(e, "tab7")}
+      >
+        نتيجة الشوط الثاني
       </a>
     </div>
   );

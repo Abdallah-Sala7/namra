@@ -9,10 +9,13 @@ import MatchResult from "./bet_tabs_content/MatchResult";
 import GoalDifference from "./bet_tabs_content/GoalDifference";
 import Scorers from "./bet_tabs_content/Scorers";
 import FirstScorer from "./bet_tabs_content/FirstScorer";
+import FirstHalfResult from "./bet_tabs_content/FirstHalfResult";
+import SecondHalfResult from "./bet_tabs_content/SecondHalfResult";
+import DefaultImg from "./DefaultImg";
 
 const BetMatches = () => {
   const dispatch = useDispatch();
-  const { betData , activeTap} = useSelector((state) => state.betModal);
+  const { betData, activeTap } = useSelector((state) => state.betModal);
 
   return (
     <div className="bet-matches-modal custom-bet-modal custom-modal">
@@ -20,6 +23,7 @@ const BetMatches = () => {
         className="model-over-lay"
         onClick={() => dispatch(setOpenModal(false))}
       ></div>
+
       <div className="modal-dialog modal-dialog-centered modal-lg">
         <div className="modal-content">
           <button
@@ -49,7 +53,11 @@ const BetMatches = () => {
                 >
                   <div className="row-col col-auto order-1 order-sm-1 mb-4 mb-sm-0">
                     <div className="team-item">
-                      <img className="img-fluid" src={barca} alt="teamName" />
+                      <DefaultImg
+                        src={betData.hostTeam.logo}
+                        imgClass={"img-fluid"}
+                        alt="teamName"
+                      />
                       <span className="team-name">{betData.hostTeam.name}</span>
                     </div>
                   </div>
@@ -104,7 +112,11 @@ const BetMatches = () => {
 
                   <div className="row-col col-auto order-2 order-sm-3 mb-4 mb-sm-0">
                     <div className="team-item">
-                      <img className="img-fluid" src={barca} alt="teamName" />
+                      <DefaultImg
+                        src={betData.guestTeam.logo}
+                        imgClass={"img-fluid"}
+                        alt="teamName"
+                      />
                       <span className="team-name">
                         {betData.guestTeam.name}
                       </span>
@@ -117,13 +129,22 @@ const BetMatches = () => {
                 <h2 className="area-title">الفئة المراهنة إليها</h2>
                 <BetTap />
               </div>
-              {
-                activeTap === "tab1" ? <WinningTeam /> :
-                activeTap === "tab2" ? <MatchResult /> :
-                activeTap === "tab3" ? <GoalDifference /> :
-                activeTap === "tab4" ? <Scorers /> :
-                activeTap === "tab5" ? <FirstScorer /> : null
-              }
+
+              {activeTap === "tab1" ? (
+                <WinningTeam />
+              ) : activeTap === "tab2" ? (
+                <MatchResult />
+              ) : activeTap === "tab3" ? (
+                <GoalDifference />
+              ) : activeTap === "tab4" ? (
+                <Scorers />
+              ) : activeTap === "tab5" ? (
+                <FirstScorer />
+              ) : activeTap === "tab6" ? (
+                <FirstHalfResult />
+              ) : activeTap === "tab7" ? (
+                <SecondHalfResult />
+              ) : null}
             </div>
           </div>
         </div>

@@ -19,15 +19,28 @@ import { useSelector } from "react-redux";
 import { useGetCompetitionQuery } from "../app/server/competitionApi";
 import { useGetGameQuery } from "../app/server/gameApi";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-  const { openModal } = useSelector((state) => state.app);
+  const { openModal, matchesTab } = useSelector((state) => state.app);
   const { data: competition, error, isLoading } = useGetCompetitionQuery();
   const {
     data: teamsData,
     error: teamErr,
     isLoading: teamLoading,
+    isSuccess,
   } = useGetGameQuery();
+
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      const filterData = teamsData["hydra:member"].filter((item) =>
+        matchesTab === "all-matches" ? item : item.predict === true
+      );
+      setMatches(filterData);
+    }
+  }, [matchesTab, teamsData]);
 
   return (
     <>
@@ -136,7 +149,7 @@ const Home = () => {
                           ) : teamErr ? (
                             <p>error...</p>
                           ) : (
-                            teamsData["hydra:member"].map((item, index) => (
+                            matches.map((item, index) => (
                               <MatchCard key={index} item={item} />
                             ))
                           )}

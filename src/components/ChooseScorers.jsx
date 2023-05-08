@@ -18,22 +18,23 @@ const ChooseScorers = () => {
             className="btn__close"
             data-bs-dismiss="modal"
             aria-label="Close"
-            onClick={
-              () => dispatch(setOpenModal(false))
-            }
+            onClick={() => dispatch(setOpenModal(false))}
           >
             <FontAwesomeIcon icon={faXmark} />
           </button>
 
-          <div className="model-over-lay" onClick={
-        () => dispatch(setOpenModal(false))
-      }></div>
+          <div
+            className="model-over-lay"
+            onClick={() => dispatch(setOpenModal(false))}
+          ></div>
 
           <div className="modal-body">
             <div className="bet-matches-area">
               <div className="area-head">
                 <h2 className="head-title">إختر الهدافين</h2>
-                <p className="head-text">يمكنك إختيار الهدافين على حسب الفريق</p>
+                <p className="head-text">
+                  يمكنك إختيار الهدافين على حسب الفريق
+                </p>
               </div>
 
               <div className="choose-scorers-area">
@@ -117,6 +118,7 @@ const ChooseScorers = () => {
                   className="footer-btn toggle-modal-btn"
                   data-bs-toggle="modal"
                   data-bs-target="#betMatchesmodal"
+                  onClick={() => dispatch(setOpenModal("betModel"))}
                 >
                   تأكيد الإختيار
                 </button>
