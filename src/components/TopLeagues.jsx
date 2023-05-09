@@ -5,9 +5,9 @@ const TopLeagues = () => {
   return (
     <div className="top-leagues-box">
       <div className="box-head">
-        <h6 className="head-title">أفضل الدوريات</h6>
+        <h1 className="head-title">أفضل الدوريات</h1>
       </div>
-      
+
       <div className="box-body">
         <ul className="leagues-list">
           <li className="list-item">
@@ -16,18 +16,21 @@ const TopLeagues = () => {
               <span className="league-name">بريميير ليغ</span>
             </a>
           </li>
+
           <li className="list-item">
             <a className="item-link" href="#">
               <img className="img-fluid" src={laLeag} alt="leagueName" />
               <span className="league-name">الدوري الأروبي</span>
             </a>
           </li>
+
           <li className="list-item">
             <a className="item-link" href="#">
               <img className="img-fluid" src={premierLeag} alt="leagueName" />
               <span className="league-name">بريميير ليغ</span>
             </a>
           </li>
+
           <li className="list-item">
             <a className="item-link" href="#">
               <img className="img-fluid" src={laLeag} alt="leagueName" />

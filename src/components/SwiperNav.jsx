@@ -9,6 +9,9 @@ const SwiperNav = () => {
     <div className="slider-arrows slider-arrows-s2">
       <button 
         className={`slider-arrow prev-btn`}
+        name="prev-btn"
+        title="Previous"
+        aria-label="Previous"
         onClick={() => swiper.slidePrev()}
       >
         <FontAwesomeIcon icon={faAngleRight} />
@@ -16,6 +19,9 @@ const SwiperNav = () => {
 
       <button 
         className={`slider-arrow next-btn`}
+        name="next-btn"
+        title="Next"
+        aria-label="Next"
         onClick={() => swiper.slideNext()}
       >
         <FontAwesomeIcon icon={faAngleLeft} />

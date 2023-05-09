@@ -25,7 +25,7 @@ const SearchBar = () => {
               className="form-control input-focus"
               placeholder="البحث حسب فريق، دوري أو مسابقة"
             />
-            <button type="submit" className="icon">
+            <button type="submit" className="icon" title="Search" aria-label="Search">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
 
@@ -131,34 +131,38 @@ const SearchBar = () => {
           <div className="leagues-wrap">
             <button
               type="button"
+              name="premierLeague"
               className={`league-item ${activeLeag.includes('premierLeague') && "active"}`}
               onClick={() => toggleActive("premierLeague")}
             >
-              <img src={premierLeague} alt="leagueName" />
+              <img src={premierLeague} alt="leagueName" width={20} height={20} />
             </button>
 
             <button
               type="button"
+              name="laLiga"
               className={`league-item ${activeLeag.includes('laLiga') && "active"}`}
               onClick={() => toggleActive("laLiga")}
             >
-              <img src={laLiga} alt="leagueName" />
+              <img src={laLiga} alt="leagueName" width={20} height={20} />
             </button>
 
             <button
               type="button"
+              name="liga1"
               className={`league-item ${activeLeag.includes('liga1') && "active"}`}
               onClick={() => toggleActive("liga1")}
             >
-              <img src={premierLeague} alt="leagueName" />
+              <img src={premierLeague} alt="leagueName" width={20} height={20} />
             </button>
 
             <button
               type="button"
+              name="liga2"
               className={`league-item ${activeLeag.includes('liga2') && "active"}`}
               onClick={() => toggleActive("liga2")}
             >
-              <img src={laLiga} alt="leagueName" />
+              <img src={laLiga} alt="leagueName" width={20} height={20} />
             </button>
           </div>
         </div>

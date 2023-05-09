@@ -31,7 +31,7 @@ const Navbar = () => {
 
         <div className="nav-logo">
           <Link to="/">
-            <img className="img-fluid main-logo" src={namraLogo} alt="Namra" />
+            <img className="img-fluid main-logo" src={namraLogo} width={"150px"} height={"30px"} alt="Namra" />
           </Link>
         </div>
 

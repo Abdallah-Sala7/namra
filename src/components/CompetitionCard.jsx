@@ -20,7 +20,7 @@ const CompetitionCard = ({ item }) => {
             <div className="col-4 text-center">
               <picture>
                 {" "}
-                <img className="comp-icon" src={item.type === "LEAGUE" ? category : trophy} alt="" />
+                <img className="comp-icon" width={"30px"} height={"20px"} src={item.type === "LEAGUE" ? category : trophy} alt="" />
               </picture>
               <h6 className="text-white">
                 {item.type === "LEAGUE" ? "دوري" : "كاس"}
@@ -35,7 +35,7 @@ const CompetitionCard = ({ item }) => {
                 <div className="d-flex align-items-center">
                   <div className="icon col-auto ms-1">
                     <picture>
-                      <img src={currency} alt="" />
+                      <img src={currency} alt="currency icon" width={10} height={10} />
                     </picture>
                   </div>
                   <div className="col-auto">
@@ -45,7 +45,7 @@ const CompetitionCard = ({ item }) => {
                 <div className="d-flex align-items-center">
                   <div className="icon col-auto ms-1">
                     <picture>
-                      <img src={point} alt="" />
+                      <img src={point} alt="point icon"  width={10} height={10} />
                     </picture>
                   </div>
                   <div className="col-auto">
@@ -57,7 +57,7 @@ const CompetitionCard = ({ item }) => {
               </div>
             </div>
             <div className="col-auto">
-              <a className="font-bold btn btn-outline-white" href="">
+              <a className="font-bold btn btn-outline-white" href="#">
                 اكتششف
               </a>
             </div>

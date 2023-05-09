@@ -6,7 +6,7 @@ const LeagResultCard = () => {
     <div className="swiper-slide">
       <div className="leagues-title">
         <span>LaLiga</span>
-        <img className="img-fluid" src={laLeag} />
+        <img className="img-fluid" src={laLeag} width={30} height={30} alt="leag name" />
       </div>
 
       <div className="leagues-results-box">

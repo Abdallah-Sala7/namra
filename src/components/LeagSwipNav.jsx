@@ -8,6 +8,9 @@ const LeagSwipNav = () => {
       <button
         className="slider-arrow prev-btn leag-swip-arrow"
         type="button"
+        title="Previous"
+        name="prev"
+        aria-label="Previous"
         onClick={() => swiper.slidePrev()}
       >
         <FontAwesomeIcon icon={faArrowRight} />
@@ -15,6 +18,9 @@ const LeagSwipNav = () => {
       <button
         className="slider-arrow next-btn leag-swip-arrow"
         type="button"
+        title="Next"
+        name="next"
+        aria-label="Next"
         onClick={() => swiper.slideNext()}
       >
         <FontAwesomeIcon icon={faArrowLeft} />
