@@ -5,6 +5,7 @@ import ScorersTap from "../ScorersTap";
 import { useSelector } from "react-redux";
 import { useCreatePredictMutation } from "../../app/server/predictsApi";
 import { useEffect, useState } from "react";
+import { calcCoinsPointSecond } from "../../data/calcFunctions";
 const Scorers = () => {
   const { betData, chooseScorer } = useSelector((state) => state.betModal);
   const [postScorers, { error, isLoading, data, isSuccess }] =
@@ -21,12 +22,21 @@ const Scorers = () => {
     setCoinCount(value);
   };
 
-  const pointsToWin = Math.round(
-    ((1 / (hostOdd * guestOdd)) * oddsDraw * coinCount) / predictionLevel
-  );
-  const coinsToWin = Math.round(
-    ((1 / (hostOdd * guestOdd)) * oddsDraw) / coinCount + predictionLevel
-  );
+  const pointsToWin = calcCoinsPointSecond(
+    hostOdd,
+    guestOdd,
+    oddsDraw,
+    coinCount,
+    predictionLevel
+  ).pointsToWin;
+
+  const coinsToWin = calcCoinsPointSecond(
+    hostOdd,
+    guestOdd,
+    oddsDraw,
+    coinCount,
+    predictionLevel
+  ).coinsToWin;
 
   function handleScorers() {
     if (chooseScorer.length > 0) {

@@ -5,6 +5,7 @@ import BetBtnsActions from "../BetBtnsActions";
 import { useCreatePredictMutation } from "../../app/server/predictsApi";
 import { useSelector } from "react-redux";
 import BetGoalDifference from "../BetGoalDifference";
+import { calcCoinsPointSecond } from "../../data/calcFunctions";
 
 const GoalDifference = () => {
   const { betData } = useSelector((state) => state.betModal);
@@ -27,12 +28,21 @@ const GoalDifference = () => {
     setGoalDifferenceValue(parseInt(value));
   };
 
-  const pointsToWin = Math.round(
-    ((1 / (hostOdd * guestOdd)) * oddsDraw * coinCount) / predictionLevel
-  );
-  const coinsToWin = Math.round(
-    ((1 / (hostOdd * guestOdd)) * oddsDraw) / coinCount + predictionLevel
-  );
+  const pointsToWin = calcCoinsPointSecond(
+    hostOdd,
+    guestOdd,
+    oddsDraw,
+    coinCount,
+    predictionLevel
+  ).pointsToWin;
+
+  const coinsToWin = calcCoinsPointSecond(
+    hostOdd,
+    guestOdd,
+    oddsDraw,
+    coinCount,
+    predictionLevel
+  ).coinsToWin;
 
   function handleGoalDifference() {
     if (!isNaN(goalDifferenceValue)) {

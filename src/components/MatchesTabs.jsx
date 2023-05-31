@@ -4,7 +4,7 @@ import { setMatchesTab } from "../app/reducers/appSlice";
 
 const MatchesTabs = () => {
   const dispatch = useDispatch();
-  const {matchesTab} = useSelector((state) => state.app);
+  const { matchesTab } = useSelector((state) => state.app);
   return (
     <div className="tabs-list">
       <button
@@ -15,10 +15,26 @@ const MatchesTabs = () => {
       </button>
 
       <button
-        className={`tab-btn ${matchesTab === "betting-matches" ? "active" : ""}`}
+        className={`tab-btn ${
+          matchesTab === "betting-matches" ? "active" : ""
+        }`}
         onClick={() => dispatch(setMatchesTab("betting-matches"))}
       >
         المراهنة
+      </button>
+
+      <button
+        className={`tab-btn ${matchesTab === "live-matches" ? "active" : ""}`}
+        onClick={() => dispatch(setMatchesTab("live-matches"))}
+      >
+        مباريات مباشرة
+      </button>
+
+      <button
+        className={`tab-btn ${matchesTab === "ended-matches" ? "active" : ""}`}
+        onClick={() => dispatch(setMatchesTab("ended-matches"))}
+      >
+        مباريات منتهية
       </button>
     </div>
   );

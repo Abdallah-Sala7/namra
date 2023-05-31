@@ -13,17 +13,49 @@ import BetMatches from "../components/BetMatches";
 import ChooseScorers from "../components/ChooseScorers";
 import { useEffect, useState } from "react";
 import DateRange from "../components/DateRange";
+import MatchCardLoading from "../components/loading/MatchCardLoading";
+import { useGetGameByDateQuery } from "../app/server/searchGameApi";
 
 const Matches = () => {
-  const { openModal, matchesTab } = useSelector((state) => state.app);
-  const { data: teamsData, isLoading, isError, isSuccess } = useGetGameQuery();
-
+  const [allMatchesLeag, setAllMatchesLeag] = useState([]);
   const [matches, setMatches] = useState([]);
 
+  const { openModal, matchesTab } = useSelector((state) => state.app);
+  const { data: teamsData, isSuccess: teamSuccess } = useGetGameQuery();
+
+  // const today = new Date().toISOString().slice(0, 10);
+  // const {data, error} = useGetGameByDateQuery("2023-01-09");
+
   useEffect(() => {
-    if (isSuccess) {
+    const updatedAllMatchesLeag = [];
+
+    matches.forEach((item) => {
+      const index = updatedAllMatchesLeag.findIndex(
+        (league) => league.league.id === item.league.id
+      );
+      if (index === -1) {
+        updatedAllMatchesLeag.push({
+          league: item.league,
+          matches: [item],
+        });
+      } else {
+        updatedAllMatchesLeag[index].matches.push(item);
+      }
+    });
+
+    setAllMatchesLeag(updatedAllMatchesLeag);
+  }, [matches]);
+
+  useEffect(() => {
+    if (teamSuccess) {
       const filterData = teamsData["hydra:member"].filter((item) =>
-        matchesTab === "all-matches" ? item : item.predict === true
+        matchesTab === "betting-matches"
+          ? item.predict === true
+          : matchesTab === "live-matches"
+          ? item.predict === true
+          : matchesTab === "ended-matches"
+          ? item.status === "FT"
+          : item
       );
       setMatches(filterData);
     }
@@ -48,23 +80,31 @@ const Matches = () => {
                           <DateRange />
                         </div>
 
-                        <div className="box-wrap">
-                          <div className="box-head">
-                            <MatchesLeague />
-                          </div>
+                        {!teamSuccess ? (
+                          <>
+                            <MatchCardLoading />
+                            <MatchCardLoading />
+                            <MatchCardLoading />
+                            <MatchCardLoading />
+                          </>
+                        ) : (
+                          allMatchesLeag.map((item, index) => (
+                            <div className="box-wrap" key={index}>
+                              <div className="box-head">
+                                <MatchesLeague
+                                  leagIcon={item.league.logo}
+                                  leagName={item.league.name}
+                                />
+                              </div>
 
-                          <div className="box-body">
-                            {isError ? (
-                              <div>error .....</div>
-                            ) : isLoading ? (
-                              <div>loading ....</div>
-                            ) : (
-                              matches.map((item, index) => (
-                                <MatchCard key={index} item={item} />
-                              ))
-                            )}
-                          </div>
-                        </div>
+                              <div className="box-body">
+                                {item.matches.map((match, index) => (
+                                  <MatchCard key={index} item={match} />
+                                ))}
+                              </div>
+                            </div>
+                          ))
+                        )}
                       </div>
                     </div>
                   </div>

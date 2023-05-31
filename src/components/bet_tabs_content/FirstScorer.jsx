@@ -5,6 +5,7 @@ import BetInfo from "../BetInfo";
 import BetBtnsActions from "../BetBtnsActions";
 import { useSelector } from "react-redux";
 import { useCreatePredictMutation } from "../../app/server/predictsApi";
+import { calcCoinsPointFirst } from "../../data/calcFunctions";
 
 const FirstScorer = () => {
   const { betData } = useSelector((state) => state.betModal);
@@ -29,13 +30,21 @@ const FirstScorer = () => {
     setOddsTeamSelcte(oddSelcte);
   };
 
-  const pointsToWin = Math.round(
-    ((1 / (hostOdd * guestOdd)) * oddsTeamSelcte * coinCount) / predictionLevel
-  );
-  const coinsToWin = Math.round(
-    ((1 / (hostOdd * guestOdd)) * oddsTeamSelcte * coinCount) / predictionLevel +
-      oddsTeamSelcte
-  );
+  const pointsToWin = calcCoinsPointFirst(
+    hostOdd,
+    guestOdd,
+    oddsTeamSelcte,
+    coinCount,
+    predictionLevel
+  ).pointsToWin;
+
+  const coinsToWin = calcCoinsPointFirst(
+    hostOdd,
+    guestOdd,
+    oddsTeamSelcte,
+    coinCount,
+    predictionLevel
+  ).coinsToWin;
 
   function handleFirstScorer() {
     if (!firstScorerTeamValue.length < 1) {

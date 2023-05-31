@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import laLeag from "../assets/img/LaLiga.svg";
+import DefaultLeag from "../assets/img/def_leag.png";
 
-const MatchesLeague = ({leagName = "LaLiga", leagIcon =laLeag }) => {
+const MatchesLeague = ({ leagName, leagIcon }) => {
   const [favLeagues, setFavLeagues] = useState([]);
 
   const handleFavLeag = (leag) => {
@@ -14,6 +14,7 @@ const MatchesLeague = ({leagName = "LaLiga", leagIcon =laLeag }) => {
       setFavLeagues(favLeagues.filter((l) => l !== leag));
     }
   };
+
   return (
     <div className="matches-league">
       <button
@@ -28,9 +29,20 @@ const MatchesLeague = ({leagName = "LaLiga", leagIcon =laLeag }) => {
       >
         <FontAwesomeIcon icon={faStar} />
       </button>
+
       <div className="d-flex flex-img">
         <span>{leagName}</span>
-        <img className="img-fluid" src={leagIcon} alt={leagName} width={30} height={30} />
+        <img
+          className="img-fluid"
+          src={`https://quiet-falls-97256.herokuapp.com/${leagIcon}`}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = DefaultLeag;
+          }}
+          alt={leagName}
+          width={30}
+          height={30}
+        />
       </div>
     </div>
   );

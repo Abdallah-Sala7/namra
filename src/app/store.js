@@ -5,6 +5,7 @@ import { competitionApi } from "./server/competitionApi";
 import { gameApi } from "./server/gameApi";
 import { predictsApi } from "./server/predictsApi";
 import { authApi } from "./server/authApi";
+import { searchGameApi } from "./server/searchGameApi";
 
 export const store = configureStore({
   reducer: {
@@ -13,8 +14,15 @@ export const store = configureStore({
     competitionApi: competitionApi.reducer,
     gameApi: gameApi.reducer,
     predictsApi: predictsApi.reducer,
-    authApi: authApi.reducer
+    authApi: authApi.reducer,
+    searchGameApi: searchGameApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(competitionApi.middleware, gameApi.middleware, predictsApi.middleware, authApi.middleware),
+    getDefaultMiddleware().concat(
+      competitionApi.middleware,
+      gameApi.middleware,
+      predictsApi.middleware,
+      authApi.middleware,
+      searchGameApi.middleware
+    ),
 });

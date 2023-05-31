@@ -5,10 +5,16 @@ import playerImg from "../assets/img/placeholder-m.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { setOpenModal } from "../app/reducers/appSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import DefaultImg from "./DefaultImg";
 
 const ChooseScorers = () => {
   const dispatch = useDispatch();
+
+  const { playersData } = useSelector((state) => state.betModal);
+
+  console.log(playersData);
+
   return (
     <div className="modal custom-modal bet-matches-modal choose-scorers-modal custom-scorer">
       <div className="modal-dialog modal-dialog-centered modal-lg">
@@ -39,76 +45,93 @@ const ChooseScorers = () => {
 
               <div className="choose-scorers-area">
                 <div className="team-item">
-                  <img className="img-fluid" src={barca} alt="teamName" />
-                  <span className="team-name">برشلونة</span>
+                  <DefaultImg
+                    src={playersData?.logo}
+                    imgClass={"img-fluid"}
+                    alt={playersData?.name}
+                  />
+
+                  <span className="team-name">{playersData?.name}</span>
                 </div>
 
                 <div className="scorers-list scroll-list active_toggle_items">
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 1"}
-                    scorerTeam={barca}
-                  />
+                  {playersData.players.length > 0 ? (
+                    playersData.players.map((player) => (
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={player.name}
+                        scorerTeam={playersData.name}
+                      />
+                    ))
+                  ) : (
+                    <>
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 1"}
+                        scorerTeam={barca}
+                      />
 
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 2"}
-                    scorerTeam={barca}
-                  />
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 2"}
+                        scorerTeam={barca}
+                      />
 
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 3"}
-                    scorerTeam={barca}
-                  />
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 3"}
+                        scorerTeam={barca}
+                      />
 
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 4"}
-                    scorerTeam={barca}
-                  />
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 4"}
+                        scorerTeam={barca}
+                      />
 
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 5"}
-                    scorerTeam={barca}
-                  />
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 5"}
+                        scorerTeam={barca}
+                      />
 
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 6"}
-                    scorerTeam={barca}
-                  />
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 6"}
+                        scorerTeam={barca}
+                      />
 
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 7"}
-                    scorerTeam={barca}
-                  />
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 7"}
+                        scorerTeam={barca}
+                      />
 
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 8"}
-                    scorerTeam={barca}
-                  />
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 8"}
+                        scorerTeam={barca}
+                      />
 
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 9"}
-                    scorerTeam={barca}
-                  />
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 9"}
+                        scorerTeam={barca}
+                      />
 
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 10"}
-                    scorerTeam={barca}
-                  />
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 10"}
+                        scorerTeam={barca}
+                      />
 
-                  <ChooseScorerCard
-                    scorerImg={playerImg}
-                    scorerName={"player 11"}
-                    scorerTeam={barca}
-                  />
+                      <ChooseScorerCard
+                        scorerImg={playerImg}
+                        scorerName={"player 11"}
+                        scorerTeam={barca}
+                      />
+                    </>
+                  )}
                 </div>
               </div>
 

@@ -8,6 +8,7 @@ import BetMatchResult from "../BetMatchResult";
 import { useSelector } from "react-redux";
 import { useCreatePredictMutation } from "../../app/server/predictsApi";
 import { useEffect, useState } from "react";
+import { calcCoinsPointFirst } from "../../data/calcFunctions";
 
 const SecondHalfResult = () => {
   const { betData } = useSelector((state) => state.betModal);
@@ -38,13 +39,21 @@ const SecondHalfResult = () => {
     setCoinCount(value);
   };
 
-  const pointsToWin = Math.round(
-    ((1 / (hostOdd * guestOdd)) * oddsTeamSelcte * coinCount) / predictionLevel
-  );
-  const coinsToWin = Math.round(
-    ((1 / (hostOdd * guestOdd)) * oddsTeamSelcte * coinCount) / predictionLevel +
-      oddsTeamSelcte
-  );
+  const pointsToWin = calcCoinsPointFirst(
+    hostOdd,
+    guestOdd,
+    oddsTeamSelcte,
+    coinCount,
+    predictionLevel
+  ).pointsToWin;
+
+  const coinsToWin = calcCoinsPointFirst(
+    hostOdd,
+    guestOdd,
+    oddsTeamSelcte,
+    coinCount,
+    predictionLevel
+  ).coinsToWin;
 
   function handleSecondHalfResult() {
     if (!isNaN(hostTeamResult) && !isNaN(guestTeamResult)) {

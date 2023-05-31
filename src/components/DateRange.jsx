@@ -1,10 +1,19 @@
+import { useDispatch, useSelector } from "react-redux";
+import { setDaysTab } from "../app/reducers/appSlice";
 
 const DateRange = () => {
+  const dispatch = useDispatch();
+  const { daysTab } = useSelector((state) => state.app);
+
+  const handleDaysTab = (e, date) => {
+    dispatch(setDaysTab(date.getDate()));
+    e.preventDefault();
+  };
 
   const today = new Date();
   const lastMonth = new Date(
     today.getFullYear(),
-    today.getMonth() - 1,
+    today.getMonth(),
     today.getDate()
   );
 
@@ -19,10 +28,15 @@ const DateRange = () => {
   };
 
   const dateList = getDates(lastMonth, today).map((date) => {
-    const options = { day: '2-digit', month: 'long' };
-    const formattedDate = date.toLocaleDateString('en-US', options);
+    const options = { day: "2-digit", month: "long" };
+    const formattedDate = date.toLocaleDateString("en-US", options);
     return (
-      <a className="tab-btn" href="#" key={date.toISOString()}>
+      <a
+        className={`tab-btn ${daysTab === date.getDate() ? "active" : ""}`}
+        onClick={(e) => handleDaysTab(e, date)}
+        href="#"
+        key={date.toISOString()}
+      >
         {formattedDate}
       </a>
     );

@@ -3,12 +3,14 @@ import { useDispatch } from "react-redux";
 import { setOpenModal } from "../app/reducers/appSlice";
 
 import points from "../assets/img/Points.svg";
-import barca from "../assets/img/Barcelona.svg";
 import { setBetData } from "../app/reducers/betSlice";
 import DefaultImg from "./DefaultImg";
+import { Link } from "react-router-dom";
 
 const MatchCard = ({ item }) => {
   const dispatch = useDispatch();
+
+  console.log(item);
 
   const dateString = item.dateTimeGame;
   const date = new Date(dateString);
@@ -22,7 +24,10 @@ const MatchCard = ({ item }) => {
     hour12: true,
     timeZone: "UTC",
     timeZoneName: "short",
+    dayLanguage: "en-US",
   };
+
+  const englishTime = date.toLocaleString("en-US", options);
   const standardTime = date.toLocaleString("ar-EG", options);
 
   let status = item.status;
@@ -37,13 +42,14 @@ const MatchCard = ({ item }) => {
       <div className="item-right">
         <div className="item-time">
           <p className="time">
-            {standardTime.split(" ")[5] + " " + standardTime.split(" ")[6]}
+            {englishTime.split(" ")[5] + " " + englishTime.split(" ")[6]}
           </p>
           <p className="date">
-            {standardTime.split(" ")[1] + " " + standardTime.split(" ")[2]}
+            {englishTime.split(" ")[2] + " " + standardTime.split(" ")[2]}
           </p>
         </div>
-        {status === "live" ? (
+
+        {status === "LIVE" ? (
           <div className="item-status live">مباشر</div>
         ) : status === "PST" ? (
           <div className="item-status today">اليوم</div>
@@ -58,7 +64,7 @@ const MatchCard = ({ item }) => {
         )}
       </div>
 
-      <div className="item-middle">
+      <Link to={`/matches/${item.id}`} className="item-middle">
         <div className="team-info">
           <span className="team-name">{item.hostTeam.name}</span>
           <DefaultImg
@@ -85,7 +91,7 @@ const MatchCard = ({ item }) => {
           />
           <span className="team-name">{item.guestTeam.name}</span>
         </div>
-      </div>
+      </Link>
 
       <div className="item-left">
         {status === "live" ||

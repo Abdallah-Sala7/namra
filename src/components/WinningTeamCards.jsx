@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import barca from "../assets/img/Barcelona.svg";
 import DefaultImg from "./DefaultImg";
 
 const WinningTeamCards = ({ betData, getWiningTeamValue }) => {

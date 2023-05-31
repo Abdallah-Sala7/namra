@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Matches from "./pages/Matches";
 import LoginLayout from "./pages/LoginLayout";
 import Login from "./components/Login";
+import SingleMatch from "./pages/SingleMatch";
 
 const LazyLoad = React.lazy(() => import("./pages/Matches"));
 
@@ -26,7 +27,10 @@ const router = createBrowserRouter([
             <LazyLoad />
           </React.Suspense>
         ),
-      },
+      },{
+        path: "matches/:id",
+        element: <SingleMatch />,
+      }
     ],
   },
   {

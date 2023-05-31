@@ -1,26 +1,20 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseUrl = "https://quiet-falls-97256.herokuapp.com";
-
 const headers = {
   "Content-Type": "application/json",
 };
 
-export const gameApi = createApi({
-  reducerPath: "gameApi",
+export const searchGameApi = createApi({
+  reducerPath: "searchGameApi",
   baseQuery: fetchBaseQuery({ baseUrl, headers }),
   tagTypes: ["Game"],
   endpoints: (builder) => ({
-    getGame: builder.query({
-      query: () => "/api/games?page=1",
-      providesTags: ["Game"],
-    }),
-
-    getGameById: builder.query({
-      query: (id) => `/api/games/${id}`,
+    getGameByDate: builder.query({
+      query: (date) => `/api/search_games?page=1&date_time_game=${date}`,
       providesTags: ["Game"],
     }),
   }),
 });
 
-export const { useGetGameQuery, useGetGameByIdQuery } = gameApi;
+export const { useGetGameByDateQuery } = searchGameApi;

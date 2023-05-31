@@ -7,7 +7,7 @@ const SwiperNav = () => {
 
   return (
     <div className="slider-arrows slider-arrows-s2">
-      <button 
+      <button
         className={`slider-arrow prev-btn`}
         name="prev-btn"
         title="Previous"
@@ -17,7 +17,7 @@ const SwiperNav = () => {
         <FontAwesomeIcon icon={faAngleRight} />
       </button>
 
-      <button 
+      <button
         className={`slider-arrow next-btn`}
         name="next-btn"
         title="Next"
@@ -27,7 +27,7 @@ const SwiperNav = () => {
         <FontAwesomeIcon icon={faAngleLeft} />
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default SwiperNav
+export default SwiperNav;

@@ -5,10 +5,8 @@ const BetCurrency = ({ getCoinsValue }) => {
   const [currencyValue, setCurrencyValue] = useState(1);
 
   const increaseCurrencyValue = () => {
-    if (currencyValue < 100) {
-      setCurrencyValue(currencyValue + 1);
-      getCoinsValue(currencyValue + 1);
-    }
+    setCurrencyValue(currencyValue + 1);
+    getCoinsValue(currencyValue + 1);
   };
 
   const decreaseCurrencyValue = () => {
@@ -37,7 +35,12 @@ const BetCurrency = ({ getCoinsValue }) => {
         </button>
 
         <div className="counter-input-wrap">
-          <p className="counter-input">{currencyValue}</p>
+          <input
+            type="number"
+            value={currencyValue}
+            onChange={(e) => setCurrencyValue(e.target.value)}
+            className="counter-input"
+          />
           <span className="hint">الحد الأدنى</span>
         </div>
 
