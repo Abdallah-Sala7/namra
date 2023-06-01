@@ -1,6 +1,25 @@
 import React from "react";
+import DefaultLeag from "../assets/img/def_leag.png";
+import DefaultImg from "./DefaultImg";
 
-const SingleMatchHead = () => {
+const SingleMatchHead = ({ data }) => {
+  const date = new Date(data.dateTimeGame);
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+    timeZone: "UTC",
+    timeZoneName: "short",
+  };
+
+  const englishTime = date.toLocaleString("en-US", options);
+  const standardTime = date.toLocaleString("ar-EG", options);
+
+  console.log(data.round.split(" ")[3]);
   return (
     <section className="section-style single-match-section">
       <div className="container">
@@ -16,39 +35,57 @@ const SingleMatchHead = () => {
 
               <div className="head-league d-flex">
                 <div className="league-flex">
-                  <img src="img/LaLiga.svg" alt="leagueName" />
-                  <span className="league-name">لا ليغا الإسبانية</span>
+                  <img
+                    className="img-fluid"
+                    src={`https://quiet-falls-97256.herokuapp.com/${data?.league?.logo}`}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = DefaultLeag;
+                    }}
+                    alt={data?.league?.name}
+                    width={20}
+                    height={20}
+                  />
+                  <span className="league-name">{data?.league?.name}</span>
                 </div>
               </div>
 
               <div className="head-info">
-                <span className="info-item date">16 أبريل (اليوم)</span>
-                <span className="info-item time">07:45</span>
+                <span className="info-item date">
+                  {englishTime.split(" ")[2]} {standardTime.split(" ")[2]} (
+                  {standardTime.split(" ")[0].split("،")[0]})
+                </span>
+
+                <span className="info-item time">
+                  {englishTime.split(" ")[5] + englishTime.split(" ")[6]}
+                </span>
               </div>
             </div>
 
             <div className="box-body">
               <div className="item-middle">
                 <div className="team-info">
-                  <img
-                    className="img-fluid"
-                    src="img/Barcelona.svg"
-                    alt="teamName"
+                  <DefaultImg
+                    src={data?.hostTeam?.logo}
+                    alt={data?.hostTeam?.name}
+                    imgClass={"img-fluid"}
                   />
-                  <span className="team-name">برشلونة</span>
+
+                  <span className="team-name">{data?.hostTeam?.name}</span>
                 </div>
                 <div className="item-result">
                   <div className="match-result">
-                    <span id="">2</span>-<span id="">3</span>
+                    <span id="">{data.hostTeamResult}</span>-
+                    <span id="">{data.guestTeamResult}</span>
                   </div>
                 </div>
                 <div className="team-info">
-                  <img
-                    className="img-fluid"
-                    src="img/Barcelona.svg"
-                    alt="teamName"
+                  <DefaultImg
+                    src={data?.guestTeam?.logo}
+                    alt={data?.guestTeam?.name}
+                    imgClass={"img-fluid"}
                   />
-                  <span className="team-name">برشلونة</span>
+                  <span className="team-name">{data?.guestTeam?.name}</span>
                 </div>
               </div>
               <div className="bet-wrap">
@@ -118,7 +155,7 @@ const SingleMatchHead = () => {
                 </svg>
                 <p className="info-text">
                   الملعب:
-                  <span>كامب نو</span>
+                  <span>{data.stadium.name}</span>
                 </p>
               </div>
               <div className="footer-info">
@@ -140,7 +177,7 @@ const SingleMatchHead = () => {
                 </svg>
                 <p className="info-text">
                   الجولة
-                  <span>17</span>
+                  <span>{data.round.split(" ")[3]}</span>
                 </p>
               </div>
               <div className="footer-info">

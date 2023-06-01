@@ -13,8 +13,6 @@ const ChooseScorers = () => {
 
   const { playersData } = useSelector((state) => state.betModal);
 
-  console.log(playersData);
-
   return (
     <div className="modal custom-modal bet-matches-modal choose-scorers-modal custom-scorer">
       <div className="modal-dialog modal-dialog-centered modal-lg">

@@ -6,7 +6,7 @@ import BetMatchResult from "../BetMatchResult";
 import { useSelector } from "react-redux";
 import { useCreatePredictMutation } from "../../app/server/predictsApi";
 import { useEffect, useState } from "react";
-import { calcCoinsPointFirst } from "../../data/calcFunctions";
+import { calcCoinsPointFirst, predictionLevels } from "../../data/calcFunctions";
 
 const MatchResult = () => {
   const { betData } = useSelector((state) => state.betModal);
@@ -20,7 +20,6 @@ const MatchResult = () => {
 
   const guestOdd = betData.guestOdd;
   const hostOdd = betData.hostOdd;
-  const predictionLevel = 1;
 
   const getMatchResult = (hostRes, guestRes) => {
     setHostTeamResult(parseInt(hostRes));
@@ -42,7 +41,7 @@ const MatchResult = () => {
     guestOdd,
     oddsTeamSelcte,
     coinCount,
-    predictionLevel
+    predictionLevels.matchResult
   ).pointsToWin;
 
   const coinsToWin = calcCoinsPointFirst(
@@ -50,7 +49,7 @@ const MatchResult = () => {
     guestOdd,
     oddsTeamSelcte,
     coinCount,
-    predictionLevel
+    predictionLevels.matchResult
   ).coinsToWin;
 
   function handleMatchResult() {

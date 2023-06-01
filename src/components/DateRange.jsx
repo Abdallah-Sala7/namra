@@ -11,9 +11,9 @@ const DateRange = () => {
   };
 
   const today = new Date();
-  const lastMonth = new Date(
+  const nextMonth = new Date(
     today.getFullYear(),
-    today.getMonth(),
+    today.getMonth() + 1,
     today.getDate()
   );
 
@@ -27,7 +27,7 @@ const DateRange = () => {
     return datesArray;
   };
 
-  const dateList = getDates(lastMonth, today).map((date) => {
+  const dateList = getDates(today, nextMonth).map((date) => {
     const options = { day: "2-digit", month: "long" };
     const formattedDate = date.toLocaleDateString("en-US", options);
     return (

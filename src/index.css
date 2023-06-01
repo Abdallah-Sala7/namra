@@ -3106,7 +3106,9 @@ button {
 }
 
 .matches-area .matches-tabs-area .inside-tabs-area .tabs-list {
-  /* margin: 0 -1rem; */
+  margin: 0 -1rem;
+  width: 100%;
+  overflow: auto;
 }
 
 .matches-area .matches-tabs-area .inside-tabs-area .tabs-list > * {
