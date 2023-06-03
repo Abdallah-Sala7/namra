@@ -20,7 +20,12 @@ export const gameApi = createApi({
       query: (id) => `/api/games/${id}`,
       providesTags: ["Game"],
     }),
+
+    getGameByDate : builder.query({
+      query: (date) => `api/games?dateTimeGame[after]=${date.start}&dateTimeGame[strictly_before]=${date.end}`,
+      providesTags: ["Game"],
+    }),
   }),
 });
 
-export const { useGetGameQuery, useGetGameByIdQuery } = gameApi;
+export const { useGetGameQuery, useGetGameByIdQuery,useGetGameByDateQuery } = gameApi;

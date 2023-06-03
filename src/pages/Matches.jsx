@@ -7,24 +7,31 @@ import LeagResultCard from "../components/LeagResultCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import LeagSwipNav from "../components/LeagSwipNav";
-import { useGetGameQuery } from "../app/server/gameApi";
+import { useGetGameByDateQuery, useGetGameQuery } from "../app/server/gameApi";
 import { useSelector } from "react-redux";
 import BetMatches from "../components/BetMatches";
 import ChooseScorers from "../components/ChooseScorers";
 import { useEffect, useState } from "react";
 import DateRange from "../components/DateRange";
 import MatchCardLoading from "../components/loading/MatchCardLoading";
-import { useGetGameByDateQuery } from "../app/server/searchGameApi";
 
 const Matches = () => {
+  const { daysTab } = useSelector((state) => state.app);
   const [allMatchesLeag, setAllMatchesLeag] = useState([]);
   const [matches, setMatches] = useState([]);
 
   const { openModal, matchesTab } = useSelector((state) => state.app);
   const { data: teamsData, isSuccess: teamSuccess } = useGetGameQuery();
 
-  // const today = new Date().toISOString().slice(0, 10);
-  // const {data, error} = useGetGameByDateQuery("2023-01-09");
+  const today = new Date();
+
+  const nextDay = new Date(today);
+  nextDay.setDate(today.getDate() + 1);
+
+  const { data: matchesData } = useGetGameByDateQuery({
+    start: today.toISOString().slice(0, 10),
+    end: nextDay.toISOString().slice(0, 10),
+  });
 
   useEffect(() => {
     const updatedAllMatchesLeag = [];

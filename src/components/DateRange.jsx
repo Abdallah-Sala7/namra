@@ -6,7 +6,7 @@ const DateRange = () => {
   const { daysTab } = useSelector((state) => state.app);
 
   const handleDaysTab = (e, date) => {
-    dispatch(setDaysTab(date.getDate()));
+    dispatch(setDaysTab(date.toISOString().slice(0, 10)));
     e.preventDefault();
   };
 
@@ -32,7 +32,7 @@ const DateRange = () => {
     const formattedDate = date.toLocaleDateString("en-US", options);
     return (
       <a
-        className={`tab-btn ${daysTab === date.getDate() ? "active" : ""}`}
+        className={`tab-btn ${daysTab === date.toISOString().slice(0, 10) ? "active" : ""}`}
         onClick={(e) => handleDaysTab(e, date)}
         href="#"
         key={date.toISOString()}

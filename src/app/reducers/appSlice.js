@@ -5,8 +5,9 @@ const initialState = {
   openModal: false,
   matchesTab: "all-matches",
   singleMatchTab: "bet-tab",
-  daysTab: new Date().getDate(),
+  daysTab: '',
 };
+
 
 export const appSlice = createSlice({
   name: "app",

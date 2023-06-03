@@ -1,39 +1,190 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SingleBetTabBox from "./SingleBetTabBox";
 import ChoseTeamCards from "./ChoseTeamCards";
 import { predictionLevels } from "../../data/calcFunctions";
 import SingleBetResult from "./SingleBetResult";
-import ChooseScorers from "../ChooseScorers";
-import DefaultImg from "../DefaultImg";
 import SingleScorrers from "./SingleScorrers";
+import { useCreatePredictMutation } from "../../app/server/predictsApi";
+import { useDispatch } from "react-redux";
+import { setIsPredicted } from "../../app/reducers/betSlice";
 
-const SingleBetTab = ({ data }) => {
-  const [winnerSelectOdd, setWinnerSelectOdd] = useState(0);
-  const [firstScoreOdd, setFirstScoreOdd] = useState(0);
-  const [resultSelectOdd, setResultSelectOdd] = useState(0);
-  const [firstHalfOdd, setFirstHalfOdd] = useState(0);
-  const [secondHalfOdd, setSecondHalfOdd] = useState(0);
+const SingleBetTab = ({ matchData }) => {
+  const dispatch = useDispatch();
+  const [postPredictions, { error, isLoading, data, isSuccess }] =
+    useCreatePredictMutation();
 
+  const [cardsSelectOdd, setCardsSelectOdd] = useState({
+    winner: 0,
+    firstScore: 0,
+    result: 0,
+    firstHalf: 0,
+    secondHalf: 0,
+  });
+
+  const [predictionCalc, setPredictionCalc] = useState({
+    winner: {},
+    firstScore: {},
+    result: {},
+    firstHalf: {},
+    secondHalf: {},
+    goalDiffrence: {},
+    scorers: {},
+  });
 
   const winnerSelect = (odd) => {
-    setWinnerSelectOdd(odd);
+    setCardsSelectOdd({
+      ...cardsSelectOdd,
+      winner: odd,
+    });
   };
 
   const firstScoreSelect = (odd) => {
-    setFirstScoreOdd(odd);
+    setCardsSelectOdd({
+      ...cardsSelectOdd,
+      firstScore: odd,
+    });
   };
 
   const resultSelect = (odd) => {
-    setResultSelectOdd(odd);
+    setCardsSelectOdd({
+      ...cardsSelectOdd,
+      result: odd,
+    });
   };
 
   const firstHalfSelect = (odd) => {
-    setFirstHalfOdd(odd);
+    setCardsSelectOdd({
+      ...cardsSelectOdd,
+      firstHalf: odd,
+    });
   };
 
   const secondHalfSelect = (odd) => {
-    setSecondHalfOdd(odd);
+    setCardsSelectOdd({
+      ...cardsSelectOdd,
+      secondHalf: odd,
+    });
   };
+
+  const winnerCalc = (val) => {
+    setPredictionCalc({
+      ...predictionCalc,
+      winner: val,
+    });
+  };
+
+  const resultCalc = (val) => {
+    setPredictionCalc({
+      ...predictionCalc,
+      result: val,
+    });
+  };
+
+  const firstHalfCalc = (val) => {
+    setPredictionCalc({
+      ...predictionCalc,
+      firstHalf: val,
+    });
+  };
+
+  const secondHalfCalc = (val) => {
+    setPredictionCalc({
+      ...predictionCalc,
+      secondHalf: val,
+    });
+  };
+
+  const goalDiffrenceCalc = (val) => {
+    setPredictionCalc({
+      ...predictionCalc,
+      goalDiffrence: val,
+    });
+  };
+
+  const scorersCalc = (val) => {
+    setPredictionCalc({
+      ...predictionCalc,
+      scorers: val,
+    });
+  };
+
+  const firstScoreCalc = (val) => {
+    setPredictionCalc({
+      ...predictionCalc,
+      firstScore: val,
+    });
+  };
+
+  const handlePrediction = (e) => {
+    postPredictions({
+      type: "EXACT_MATCH",
+      coins: predictionCalc.result.coinCount,
+      pointsToWin: predictionCalc.result.pointsToWin,
+      coinsToWin: predictionCalc.result.coinsToWin,
+      pointsToLose: 0,
+    });
+
+    postPredictions({
+      type: "EXACT_MATCH_FIRST_HALF",
+      coins: predictionCalc.firstHalf.coinCount,
+      pointsToWin: predictionCalc.firstHalf.pointsToWin,
+      coinsToWin: predictionCalc.firstHalf.coinsToWin,
+      pointsToLose: 0,
+    });
+
+    postPredictions({
+      type: "WINNER_TEAM",
+      coins: predictionCalc.winner.coinCount,
+      pointsToWin: predictionCalc.winner.pointsToWin,
+      coinsToWin: predictionCalc.winner.coinsToWin,
+      pointsToLose: 0,
+    });
+
+    postPredictions({
+      type: "EXACT_MATCH_SECOND_HALF",
+      coins: predictionCalc.secondHalf.coinCount,
+      pointsToWin: predictionCalc.secondHalf.pointsToWin,
+      coinsToWin: predictionCalc.secondHalf.coinsToWin,
+      pointsToLose: 0,
+    });
+
+    postPredictions({
+      type: "GOAL_DIFFERENCE",
+      coins: predictionCalc.goalDiffrence.coinCount,
+      pointsToWin: predictionCalc.goalDiffrence.pointsToWin,
+      coinsToWin: predictionCalc.goalDiffrence.coinsToWin,
+      pointsToLose: 0,
+    });
+
+    postPredictions({
+      type: "SCORER",
+      coins: predictionCalc.scorers.coinCount,
+      pointsToWin: predictionCalc.scorers.pointsToWin,
+      coinsToWin: predictionCalc.scorers.coinsToWin,
+      pointsToLose: 0,
+    });
+
+    postPredictions({
+      type: "FIRST_TO_SCORE",
+      coins: predictionCalc.firstScore.coinCount,
+      pointsToWin: predictionCalc.firstScore.pointsToWin,
+      coinsToWin: predictionCalc.firstScore.coinsToWin,
+      pointsToLose: 0,
+    });
+
+    dispatch(setIsPredicted(true))
+    e.preventDefault();
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log(data);
+    } else if (error) {
+      console.log(error);
+    } else if (isLoading) {
+      console.log("loading");
+    }
+  }, [handlePrediction]);
 
   return (
     <div className="tab-content bet-tab active">
@@ -43,7 +194,8 @@ const SingleBetTab = ({ data }) => {
         </div>
         <a
           className="action-btn single-match-btn disable"
-          href="bet-current.html"
+          href="#"
+          onClick={handlePrediction}
         >
           تأكيد المراهنة
         </a>
@@ -53,32 +205,35 @@ const SingleBetTab = ({ data }) => {
         <div className="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 gx-lg-4 gx-3">
           <SingleBetTabBox
             title={"الفريق الفائز"}
-            hostOdd={data?.hostOdd}
-            guestOdd={data?.guestOdd}
-            oddSelect={winnerSelectOdd}
-            oddDraw={data?.drawOdd}
+            hostOdd={matchData.hostOdd}
+            guestOdd={matchData.guestOdd}
+            oddSelect={cardsSelectOdd.winner}
+            oddDraw={matchData.drawOdd}
             predictionLevel={predictionLevels.winner}
+            handleChange={winnerCalc}
           >
-            <ChoseTeamCards matchData={data} handleClick={winnerSelect} />
+            <ChoseTeamCards matchData={matchData} handleClick={winnerSelect} />
           </SingleBetTabBox>
 
           <SingleBetTabBox
             title={" نتيجة المبارات"}
-            hostOdd={data?.hostOdd}
-            guestOdd={data?.guestOdd}
-            oddSelect={resultSelectOdd}
-            oddDraw={data?.drawOdd}
+            hostOdd={matchData.hostOdd}
+            guestOdd={matchData.guestOdd}
+            oddSelect={cardsSelectOdd.result}
+            oddDraw={matchData.drawOdd}
             predictionLevel={predictionLevels.matchResult}
+            handleChange={resultCalc}
           >
-            <SingleBetResult data={data} handleChange={resultSelect} />
+            <SingleBetResult data={matchData} handleChange={resultSelect} />
           </SingleBetTabBox>
 
           <SingleBetTabBox
             title={"فارق الأهداف"}
-            hostOdd={data?.hostOdd}
-            guestOdd={data?.guestOdd}
-            oddDraw={data?.drawOdd}
+            hostOdd={matchData.hostOdd}
+            guestOdd={matchData.guestOdd}
+            oddDraw={matchData.drawOdd}
             predictionLevel={predictionLevels.goalDiff}
+            handleChange={goalDiffrenceCalc}
           >
             <div className="bet-difference">
               <input type="tel" placeholder="-" maxLength="2" />
@@ -87,45 +242,52 @@ const SingleBetTab = ({ data }) => {
 
           <SingleBetTabBox
             title={"الهدافين"}
-            hostOdd={data?.hostOdd}
-            guestOdd={data?.guestOdd}
-            oddDraw={data?.drawOdd}
+            hostOdd={matchData.hostOdd}
+            guestOdd={matchData.guestOdd}
+            oddDraw={matchData.drawOdd}
             predictionLevel={predictionLevels.playerToScore}
+            handleChange={scorersCalc}
           >
-            <SingleScorrers data={data} />
+            <SingleScorrers data={matchData} />
           </SingleBetTabBox>
 
           <SingleBetTabBox
             title={"السباق للتهديف"}
-            hostOdd={data?.hostOdd}
-            guestOdd={data?.guestOdd}
-            oddSelect={firstScoreOdd}
-            oddDraw={data?.drawOdd}
+            hostOdd={matchData.hostOdd}
+            guestOdd={matchData.guestOdd}
+            oddSelect={cardsSelectOdd.firstScore}
+            oddDraw={matchData.drawOdd}
             predictionLevel={predictionLevels.firstScorer}
+            handleChange={firstScoreCalc}
           >
-            <ChoseTeamCards matchData={data} handleClick={firstScoreSelect} />
+            <ChoseTeamCards
+              matchData={matchData}
+              handleClick={firstScoreSelect}
+            />
           </SingleBetTabBox>
 
           <SingleBetTabBox
             title={"الشوط الأول"}
-            hostOdd={data?.hostOdd}
-            guestOdd={data?.guestOdd}
-            oddSelect={firstHalfOdd}
-            oddDraw={data?.drawOdd}
+            hostOdd={matchData.hostOdd}
+            guestOdd={matchData.guestOdd}
+            oddSelect={cardsSelectOdd.firstHalf}
+            oddDraw={matchData.drawOdd}
             predictionLevel={predictionLevels.firstHalf}
+            handleChange={firstHalfCalc}
           >
-            <SingleBetResult data={data} handleChange={firstHalfSelect} />
+            <SingleBetResult data={matchData} handleChange={firstHalfSelect} />
           </SingleBetTabBox>
 
           <SingleBetTabBox
             title={"الشوط الثاني"}
-            hostOdd={data?.hostOdd}
-            guestOdd={data?.guestOdd}
-            oddSelect={secondHalfOdd}
-            oddDraw={data?.drawOdd}
+            hostOdd={matchData.hostOdd}
+            guestOdd={matchData.guestOdd}
+            oddSelect={cardsSelectOdd.secondHalf}
+            oddDraw={matchData.drawOdd}
             predictionLevel={predictionLevels.secondHalf}
+            handleChange={secondHalfCalc}
           >
-            <SingleBetResult data={data} handleChange={secondHalfSelect} />
+            <SingleBetResult data={matchData} handleChange={secondHalfSelect} />
           </SingleBetTabBox>
         </div>
       </div>

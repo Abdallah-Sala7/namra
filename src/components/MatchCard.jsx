@@ -10,8 +10,6 @@ import { Link } from "react-router-dom";
 const MatchCard = ({ item }) => {
   const dispatch = useDispatch();
 
-  console.log(item);
-
   const dateString = item.dateTimeGame;
   const date = new Date(dateString);
   const options = {

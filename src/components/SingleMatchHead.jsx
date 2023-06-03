@@ -1,6 +1,8 @@
 import React from "react";
 import DefaultLeag from "../assets/img/def_leag.png";
 import DefaultImg from "./DefaultImg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const SingleMatchHead = ({ data }) => {
   const date = new Date(data.dateTimeGame);
@@ -19,7 +21,6 @@ const SingleMatchHead = ({ data }) => {
   const englishTime = date.toLocaleString("en-US", options);
   const standardTime = date.toLocaleString("ar-EG", options);
 
-  console.log(data.round.split(" ")[3]);
   return (
     <section className="section-style single-match-section">
       <div className="container">
@@ -30,7 +31,7 @@ const SingleMatchHead = ({ data }) => {
                 type="button"
                 className="favorite-btn active_toggle_item ms-3"
               >
-                <i className="fa-solid fa-star"></i>
+                <FontAwesomeIcon icon={faStar} />
               </button>
 
               <div className="head-league d-flex">
@@ -199,7 +200,9 @@ const SingleMatchHead = ({ data }) => {
                 </svg>
                 <p className="info-text">
                   الحكم:
-                  <span>منزونا إيبيس</span>
+                  <span> 
+                    {data.referee ? data.referee.name : "غير معروف"}
+                  </span>
                 </p>
               </div>
             </div>

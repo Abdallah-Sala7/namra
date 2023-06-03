@@ -13,6 +13,7 @@ const SingleBetTabBox = ({
   guestOdd,
   oddDraw,
   predictionLevel,
+  handleChange,
 }) => {
   const [coinCount, setCoinCount] = useState(1);
   const [pointsToWin, setPointsToWin] = useState(0);
@@ -59,6 +60,10 @@ const SingleBetTabBox = ({
           predictionLevel
         ).pointsToWin
       );
+    }
+
+    if (handleChange) {
+      handleChange({ coinCount, pointsToWin, coinsToWin });
     }
   }, [oddSelect, hostOdd, guestOdd, predictionLevel, coinCount]);
 
