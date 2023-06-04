@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SingleMatchSummary from "../components/SingleMatchSummary";
 import CurruntBets from "../components/CurruntBets";
+import SingleMatchLoading from "../components/loading/SingleMatchLoading";
+import SingleMatchStatistics from "../components/SingleMatchStatistics";
 
 const SingleMatch = () => {
   const param = useParams().id;
@@ -15,10 +17,7 @@ const SingleMatch = () => {
   const { singleMatchTab } = useSelector((state) => state.app);
   const { isPredicted } = useSelector((state) => state.betModal);
 
-  if (isLoading) {
-    return <div>loading...</div>;
-  }
-
+  if (isLoading)  return <SingleMatchLoading />;
   return (
     <div>
       <SingleMatchHead data={data} />
@@ -36,7 +35,7 @@ const SingleMatch = () => {
               ) : singleMatchTab === "summary-tab" ? (
                 <SingleMatchSummary data={data} />
               ) : singleMatchTab === "statistics-tab" ? (
-                <div>00</div>
+                <SingleMatchStatistics />
               ) : (
                 <SingleBetTab data={data} />
               )}

@@ -78,7 +78,7 @@ body[data-panel="noScroll"] {
 
 a {
   text-decoration: none !important;
-  color: inherit ;
+  color: inherit;
   outline: none !important;
 }
 
@@ -1156,6 +1156,8 @@ button {
   border-bottom: 3px solid var(--clr-txt2);
   display: flex;
   flex-wrap: nowrap;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .matches-area .matches-tabs-area .tabs-list > * {
@@ -1186,9 +1188,6 @@ button {
   height: 3px;
   transition: all 0.3s ease;
   opacity: 0;
-}
-
-.matches-area .matches-tabs-area .tabs-list .tab-btn:hover {
 }
 
 .matches-area .matches-tabs-area .tabs-list .tab-btn.active {
@@ -1589,6 +1588,89 @@ button {
   margin: 0;
 }
 
+/* ---------------------- match Loading -------------------- */
+
+.card-loading {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 1.25rem;
+  border-radius: var(--border-r-3);
+  margin-bottom: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+}
+
+/* .card-loading .card-loading-right {
+  width: 150px;
+} */
+
+.card-loading .card-loading-right span {
+  display: block;
+  height: 15px;
+  border-radius: 2px;
+  background-color: hsl(200, 20%, 80%);
+  animation: placeHolderShimmer 2.5s linear infinite forwards alternate;
+}
+
+.card-loading .card-loading-right span:first-of-type {
+  width: 50px;
+  margin-bottom: 0.5rem;
+}
+
+.card-loading .card-loading-right span:last-of-type {
+  width: 75px;
+}
+
+.card-loading .card-loading-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.card-loading .card-loading-middle .card-loading-item-result {
+  color: var(--clr-txt2);
+  flex-shrink: 0;
+}
+
+.card-loading .card-loading-middle .card-loading-team-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: hsl(200, 20%, 80%);
+  animation: placeHolderShimmer 2s linear infinite forwards alternate;
+}
+
+.card-loading .card-loading-left {
+  width: 120px;
+  height: 30px;
+  border-radius: 2px;
+  background-color: hsl(200, 20%, 80%);
+  animation: placeHolderShimmer 2s linear infinite forwards alternate;
+}
+
+.card-loading .card-loading-team-name {
+  display: block;
+  width: 80px;
+  height: 18px;
+  border-radius: 2px;
+  background-color: hsl(200, 20%, 80%);
+  animation: placeHolderShimmer 2s linear infinite forwards alternate;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
 @media (max-width: 767.98px) {
   .matches-area .matches-boxes .box-wrap .box-item {
     padding: 1.25rem 0.25rem;
@@ -1619,7 +1701,7 @@ button {
     flex: none;
   }
 
-  .card-loading .card-loading-middle{
+  .card-loading .card-loading-middle {
     width: 100%;
   }
 
@@ -1648,87 +1730,6 @@ button {
   }
 }
 
-/* ---------------------- match Loading -------------------- */
-
-.card-loading {
-  width: 100%;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  row-gap: 1.25rem;
-  border-radius: var(--border-r-3);
-  margin-bottom: 1rem;
-  background-color: #fff;
-  padding: 1rem;
-}
-
-.card-loading .card-loading-right {
-  width: 150px;
-}
-
-.card-loading .card-loading-right span {
-  display: block;
-  height: 15px;
-  border-radius: 2px;
-  background-color: hsl(200, 20%, 80%);
-  animation: placeHolderShimmer 2.5s linear infinite forwards alternate;
-}
-
-.card-loading .card-loading-right span:first-of-type {
-  width: 55px;
-  margin-bottom: 0.5rem;
-}
-
-.card-loading .card-loading-right span:last-of-type {
-  width: 75px;
-}
-
-.card-loading .card-loading-middle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.card-loading .card-loading-middle .card-loading-item-result {
-  color: var(--clr-txt2);
-}
-
-.card-loading .card-loading-middle .card-loading-team-logo {
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  background-color: hsl(200, 20%, 80%);
-  animation: placeHolderShimmer 2s linear infinite forwards alternate;
-}
-
-.card-loading .card-loading-left {
-  width: 160px;
-  height: 30px;
-  border-radius: 2px;
-  background-color: hsl(200, 20%, 80%);
-  animation: placeHolderShimmer 2s linear infinite forwards alternate;
-}
-
-.card-loading .card-loading-team-name {
-  display: block;
-  width: 90px;
-  height: 18px;
-  border-radius: 2px;
-  background-color: hsl(200, 20%, 80%);
-  animation: placeHolderShimmer 2s linear infinite forwards alternate;
-}
-
-@keyframes placeHolderShimmer {
-  0% {
-    background-color: hsl(200, 20%, 80%);
-  }
-  100% {
-    background-color: hsl(200, 20%, 95%);
-  }
-}
 /*------------- #top-matches-area --------------*/
 
 .side-cols > *:not(:last-child) {
@@ -3109,6 +3110,7 @@ button {
   margin: 0 -1rem;
   width: 100%;
   overflow: auto;
+  border: none;
 }
 
 .matches-area .matches-tabs-area .inside-tabs-area .tabs-list > * {
@@ -4859,6 +4861,61 @@ button {
   .bet-result
   .result-wrap {
   color: var(--box-status-clr);
+}
+
+/* *********single match loading************* */
+
+.single-match-area .bet-head-loading,
+.footer-loading {
+  width: 150px !important;
+  flex: 0 0 150px !important;
+  height: 25px;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+  background-color: hsl(200, 20%, 80%);
+  animation: placeHolderShimmer 2s linear infinite forwards alternate;
+}
+
+.footer-loading {
+  width: 120px !important;
+  flex: 0 0 120px !important;
+}
+
+.single-match-area .bet-info-loading {
+  height: 18px;
+  border-radius: 2px;
+  background-color: hsl(200, 20%, 80%);
+  animation: placeHolderShimmer 2s linear infinite forwards alternate;
+}
+
+.single-match-area .bet-info-loading:first-child {
+  width: 40px;
+}
+
+.single-match-area .bet-info-loading:nth-child(2) {
+  width: 70px;
+}
+
+.single-match-area .bet-info-loading:nth-child(3) {
+  width: 120px;
+}
+
+
+.single-match-area .team-info .team-img-loading {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  background-color: hsl(200, 20%, 80%);
+  animation: placeHolderShimmer 2s linear infinite forwards alternate;
+}
+
+.single-match-area .team-info .team-name-loading {
+  width: 100px;
+  height: 18px;
+  border-radius: 2px;
+  background-color: hsl(200, 20%, 80%);
+  animation: placeHolderShimmer 2s linear infinite forwards alternate;
 }
 
 /**** choose-scorers-modal **/

@@ -4,51 +4,51 @@ import playerImg from "../assets/img/placeholder-m.jpg"
 
 const CurruntBets = () => {
   return (
-    <section class="section-style single-match-bets-section end-items">
-      <div class="container">
-        <div class="single-match-area matches-area tabs-content-area">
-          <div class="tabs-container">
-            <div class="tab-content bet-tab active">
-              <div class="flex-head">
-                <div class="main-title">
-                  <h1 class="title-text">الرهان الحالي على المباراة</h1>
+    <section className="section-style single-match-bets-section end-items">
+      <div className="container">
+        <div className="single-match-area matches-area tabs-content-area">
+          <div className="tabs-container">
+            <div className="tab-content bet-tab active">
+              <div className="flex-head">
+                <div className="main-title">
+                  <h1 className="title-text">الرهان الحالي على المباراة</h1>
                 </div>
               </div>
 
-              <div class="bet-types-boxes">
-                <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 gx-lg-4 gx-3">
-                  <div class="box-wrap">
+              <div className="bet-types-boxes">
+                <div className="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 gx-lg-4 gx-3">
+                  <div className="box-wrap">
                     <div
-                      class="bet-box bet-submitted waiting"
+                      className="bet-box bet-submitted waiting"
                       data-target="WINNER_TEAM"
                     >
-                      <h4 class="box-title">الفريق الفائز</h4>
+                      <h4 className="box-title">الفريق الفائز</h4>
 
-                      <div class="bet-teams active_toggle_items only_active_item">
-                        <div class="team-item active_toggle_item active">
+                      <div className="bet-teams active_toggle_items only_active_item">
+                        <div className="team-item active_toggle_item active">
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
-                        <div class="team-item active_toggle_item">
+                        <div className="team-item active_toggle_item">
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
                       </div>
-                      <div class="bet-points">
-                        <p class="note-text">8400 عملة مراهنة</p>
+                      <div className="bet-points">
+                        <p className="note-text">8400 عملة مراهنة</p>
                       </div>
 
-                      <div class="bet-info">
-                        <div class="info-item">
-                          <div class="item-title">
+                      <div className="bet-info">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -64,10 +64,10 @@ const CurruntBets = () => {
                             </svg>
                             الحصيلة المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -83,10 +83,10 @@ const CurruntBets = () => {
                             </svg>
                             الربح المحتمل
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -102,70 +102,71 @@ const CurruntBets = () => {
                             </svg>
                             الخسائر المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
                       </div>
 
-                      <div class="action-btns">
-                        <a class="action-btn edit-btn" href="#">
+                      <div className="action-btns">
+                        <a className="action-btn edit-btn" href="#">
                           تعديل
                         </a>
-                        <a class="action-btn del-btn" href="#">
+                        <a className="action-btn del-btn" href="#">
                           حذف
                         </a>
                       </div>
                     </div>
                   </div>
-                  <div class="box-wrap">
+                  <div className="box-wrap">
                     <div
-                      class="bet-box bet-submitted waiting"
+                      className="bet-box bet-submitted waiting"
                       data-target="EXACT_RESULT"
                     >
-                      <h4 class="box-title">نتيجة المبارات</h4>
+                      <h4 className="box-title">نتيجة المبارات</h4>
 
-                      <div class="bet-result">
-                        <div class="team-item">
+                      <div className="bet-result">
+                        <div className="team-item">
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
-                        <div class="result-wrap">
-                          <div class="result-inputs">
+                        <div className="result-wrap">
+                          <div className="result-inputs">
                             <input
                               type="tel"
                               placeholder="-"
-                              maxlength="2"
-                              value="3"
+                              maxLength="2"
+                              defaultValue="3"
+                              
                             />
                             <span>-</span>
                             <input
                               type="tel"
                               placeholder="-"
-                              maxlength="2"
-                              value="1"
+                              maxLength="2"
+                              defaultValue="1"
                             />
                           </div>
                         </div>
-                        <div class="team-item">
+                        <div className="team-item">
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
                       </div>
 
-                      <div class="bet-points">
-                        <p class="note-text">8400 عملة مراهنة</p>
+                      <div className="bet-points">
+                        <p className="note-text">8400 عملة مراهنة</p>
                       </div>
 
-                      <div class="bet-info">
-                        <div class="info-item">
-                          <div class="item-title">
+                      <div className="bet-info">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -181,10 +182,10 @@ const CurruntBets = () => {
                             </svg>
                             الحصيلة المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -200,10 +201,10 @@ const CurruntBets = () => {
                             </svg>
                             الربح المحتمل
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -219,43 +220,43 @@ const CurruntBets = () => {
                             </svg>
                             الخسائر المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
                       </div>
 
-                      <div class="action-btns">
-                        <a class="action-btn edit-btn" href="#">
+                      <div className="action-btns">
+                        <a className="action-btn edit-btn" href="#">
                           تعديل
                         </a>
-                        <a class="action-btn del-btn" href="#">
+                        <a className="action-btn del-btn" href="#">
                           حذف
                         </a>
                       </div>
                     </div>
                   </div>
-                  <div class="box-wrap">
+                  <div className="box-wrap">
                     <div
-                      class="bet-box bet-submitted waiting"
+                      className="bet-box bet-submitted waiting"
                       data-target="GOAL_DIFFERENCE"
                     >
-                      <h4 class="box-title">فارق الأهداف</h4>
+                      <h4 className="box-title">فارق الأهداف</h4>
 
-                      <div class="bet-difference">
+                      <div className="bet-difference">
                         <input
                           type="tel"
                           placeholder="-"
-                          maxlength="2"
-                          value="3"
+                          maxLength="2"
+                          defaultValue="3"
                         />
                       </div>
 
-                      <div class="bet-points">
-                        <p class="note-text">8400 عملة مراهنة</p>
+                      <div className="bet-points">
+                        <p className="note-text">8400 عملة مراهنة</p>
                       </div>
 
-                      <div class="bet-info">
-                        <div class="info-item">
-                          <div class="item-title">
+                      <div className="bet-info">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -271,10 +272,10 @@ const CurruntBets = () => {
                             </svg>
                             الحصيلة المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -290,10 +291,10 @@ const CurruntBets = () => {
                             </svg>
                             الربح المحتمل
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -309,128 +310,128 @@ const CurruntBets = () => {
                             </svg>
                             الخسائر المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
                       </div>
 
-                      <div class="action-btns">
-                        <a class="action-btn edit-btn" href="#">
+                      <div className="action-btns">
+                        <a className="action-btn edit-btn" href="#">
                           تعديل
                         </a>
-                        <a class="action-btn del-btn" href="#">
+                        <a className="action-btn del-btn" href="#">
                           حذف
                         </a>
                       </div>
                     </div>
                   </div>
-                  <div class="box-wrap">
+                  <div className="box-wrap">
                     <div
-                      class="bet-box bet-submitted waiting"
+                      className="bet-box bet-submitted waiting"
                       data-target="SCORER"
                     >
-                      <h4 class="box-title">الهدافين</h4>
+                      <h4 className="box-title">الهدافين</h4>
 
-                      <div class="bet-players">
-                        <div class="players-items">
-                          <div class="row row-cols-4">
-                            <div class="box-wrap">
-                              <div class="img-box">
+                      <div className="bet-players">
+                        <div className="players-items">
+                          <div className="row row-cols-4">
+                            <div className="box-wrap">
+                              <div className="img-box">
                                 <img
-                                  class="img-fluid player-img"
+                                  className="img-fluid player-img"
                                   src={playerImg}
                                   alt="playerName"
                                 />
                                 <img
-                                  class="img-fluid team-img"
+                                  className="img-fluid team-img"
                                   src={barca}
                                   alt="teamName"
                                 />
                               </div>
-                              <span class="player-name">ميسي</span>
+                              <span className="player-name">ميسي</span>
                             </div>
-                            <div class="box-wrap">
-                              <div class="img-box">
+                            <div className="box-wrap">
+                              <div className="img-box">
                                 <img
-                                  class="img-fluid player-img"
+                                  className="img-fluid player-img"
                                   src={playerImg}
                                   alt="playerName"
                                 />
                                 <img
-                                  class="img-fluid team-img"
+                                  className="img-fluid team-img"
                                   src={barca}
                                   alt="teamName"
                                 />
                               </div>
-                              <span class="player-name">ميسي</span>
+                              <span className="player-name">ميسي</span>
                             </div>
-                            <div class="box-wrap">
-                              <div class="img-box">
+                            <div className="box-wrap">
+                              <div className="img-box">
                                 <img
-                                  class="img-fluid player-img"
+                                  className="img-fluid player-img"
                                   src={playerImg}
                                   alt="playerName"
                                 />
                                 <img
-                                  class="img-fluid team-img"
+                                  className="img-fluid team-img"
                                   src={barca}
                                   alt="teamName"
                                 />
                               </div>
-                              <span class="player-name">ميسي</span>
+                              <span className="player-name">ميسي</span>
                             </div>
-                            <div class="box-wrap">
-                              <div class="img-box">
+                            <div className="box-wrap">
+                              <div className="img-box">
                                 <img
-                                  class="img-fluid player-img"
+                                  className="img-fluid player-img"
                                   src={playerImg}
                                   alt="playerName"
                                 />
                                 <img
-                                  class="img-fluid team-img"
+                                  className="img-fluid team-img"
                                   src={barca}
                                   alt="teamName"
                                 />
                               </div>
-                              <span class="player-name">ميسي</span>
+                              <span className="player-name">ميسي</span>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* <div class="bet-teams active_toggle_items">
+                      {/* <div className="bet-teams active_toggle_items">
                         <div
-                          class="team-item active_toggle_item"
+                          className="team-item active_toggle_item"
                           data-bs-toggle="modal"
                           data-bs-target="#ChooseScorersmodal"
                         >
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
                         <div
-                          class="team-item active_toggle_item"
+                          className="team-item active_toggle_item"
                           data-bs-toggle="modal"
                           data-bs-target="#ChooseScorersmodal"
                         >
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
                       </div> */}
 
-                      <div class="bet-points">
-                        <p class="note-text">8400 عملة مراهنة</p>
+                      <div className="bet-points">
+                        <p className="note-text">8400 عملة مراهنة</p>
                       </div>
 
-                      <div class="bet-info">
-                        <div class="info-item">
-                          <div class="item-title">
+                      <div className="bet-info">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -446,10 +447,10 @@ const CurruntBets = () => {
                             </svg>
                             الحصيلة المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -465,10 +466,10 @@ const CurruntBets = () => {
                             </svg>
                             الربح المحتمل
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -484,53 +485,53 @@ const CurruntBets = () => {
                             </svg>
                             الخسائر المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
                       </div>
 
-                      <div class="action-btns">
-                        <a class="action-btn edit-btn" href="#">
+                      <div className="action-btns">
+                        <a className="action-btn edit-btn" href="#">
                           تعديل
                         </a>
-                        <a class="action-btn del-btn" href="#">
+                        <a className="action-btn del-btn" href="#">
                           حذف
                         </a>
                       </div>
                     </div>
                   </div>
-                  <div class="box-wrap">
+                  <div className="box-wrap">
                     <div
-                      class="bet-box bet-submitted waiting"
+                      className="bet-box bet-submitted waiting"
                       data-target="FIRST_TO_SCORE"
                     >
-                      <h4 class="box-title">السباق للتهديف</h4>
+                      <h4 className="box-title">السباق للتهديف</h4>
 
-                      <div class="bet-teams active_toggle_items only_active_item">
-                        <div class="team-item active_toggle_item active">
+                      <div className="bet-teams active_toggle_items only_active_item">
+                        <div className="team-item active_toggle_item active">
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
-                        <div class="team-item active_toggle_item">
+                        <div className="team-item active_toggle_item">
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
                       </div>
 
-                      <div class="bet-points">
-                        <p class="note-text">الحد الأدنى للعملة المراهنة</p>
+                      <div className="bet-points">
+                        <p className="note-text">الحد الأدنى للعملة المراهنة</p>
                       </div>
 
-                      <div class="bet-info">
-                        <div class="info-item">
-                          <div class="item-title">
+                      <div className="bet-info">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -546,10 +547,10 @@ const CurruntBets = () => {
                             </svg>
                             الحصيلة المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -565,10 +566,10 @@ const CurruntBets = () => {
                             </svg>
                             الربح المحتمل
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -584,71 +585,71 @@ const CurruntBets = () => {
                             </svg>
                             الخسائر المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
                       </div>
 
-                      <div class="action-btns">
-                        <a class="action-btn edit-btn" href="#">
+                      <div className="action-btns">
+                        <a className="action-btn edit-btn" href="#">
                           تعديل
                         </a>
-                        <a class="action-btn del-btn" href="#">
+                        <a className="action-btn del-btn" href="#">
                           حذف
                         </a>
                       </div>
                     </div>
                   </div>
-                  <div class="box-wrap">
+                  <div className="box-wrap">
                     <div
-                      class="bet-box bet-submitted waiting"
+                      className="bet-box bet-submitted waiting"
                       data-target="EXACT_MATCH_FIRST_HALF"
                     >
-                      <h4 class="box-title">نتيجة الأشواط</h4>
+                      <h4 className="box-title">نتيجة الأشواط</h4>
 
-                      <div class="bet-result">
-                        <div class="team-item">
+                      <div className="bet-result">
+                        <div className="team-item">
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
-                        <div class="result-wrap">
-                          <p class="result-note">الشوط الأول</p>
-                          <div class="result-inputs">
+                        <div className="result-wrap">
+                          <p className="result-note">الشوط الأول</p>
+                          <div className="result-inputs">
                             <input
                               type="tel"
                               placeholder="-"
-                              maxlength="2"
-                              value="3"
+                              maxLength="2"
+                              defaultValue="3"
                             />
                             <span>-</span>
                             <input
                               type="tel"
                               placeholder="-"
-                              maxlength="2"
-                              value="1"
+                              maxLength="2"
+                              defaultValue="1"
                             />
                           </div>
                         </div>
-                        <div class="team-item">
+                        <div className="team-item">
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
                       </div>
 
-                      <div class="bet-points">
-                        <p class="note-text">8400 عملة مراهنة</p>
+                      <div className="bet-points">
+                        <p className="note-text">8400 عملة مراهنة</p>
                       </div>
 
-                      <div class="bet-info">
-                        <div class="info-item">
-                          <div class="item-title">
+                      <div className="bet-info">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -664,10 +665,10 @@ const CurruntBets = () => {
                             </svg>
                             الحصيلة المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -683,10 +684,10 @@ const CurruntBets = () => {
                             </svg>
                             الربح المحتمل
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -702,71 +703,71 @@ const CurruntBets = () => {
                             </svg>
                             الخسائر المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
                       </div>
 
-                      <div class="action-btns">
-                        <a class="action-btn edit-btn" href="#">
+                      <div className="action-btns">
+                        <a className="action-btn edit-btn" href="#">
                           تعديل
                         </a>
-                        <a class="action-btn del-btn" href="#">
+                        <a className="action-btn del-btn" href="#">
                           حذف
                         </a>
                       </div>
                     </div>
                   </div>
-                  <div class="box-wrap">
+                  <div className="box-wrap">
                     <div
-                      class="bet-box bet-submitted waiting"
+                      className="bet-box bet-submitted waiting"
                       data-target="EXACT_MATCH_SECOND_HALF"
                     >
-                      <h4 class="box-title">نتيجة الأشواط</h4>
+                      <h4 className="box-title">نتيجة الأشواط</h4>
 
-                      <div class="bet-result">
-                        <div class="team-item">
+                      <div className="bet-result">
+                        <div className="team-item">
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
-                        <div class="result-wrap">
-                          <p class="result-note">الشوط الثاني</p>
-                          <div class="result-inputs">
+                        <div className="result-wrap">
+                          <p className="result-note">الشوط الثاني</p>
+                          <div className="result-inputs">
                             <input
                               type="tel"
                               placeholder="-"
-                              maxlength="2"
-                              value="3"
+                              maxLength="2"
+                              defaultValue="3"
                             />
                             <span>-</span>
                             <input
                               type="tel"
                               placeholder="-"
-                              maxlength="2"
-                              value="1"
+                              maxLength="2"
+                              defaultValue="1"
                             />
                           </div>
                         </div>
-                        <div class="team-item">
+                        <div className="team-item">
                           <img
-                            class="img-fluid"
+                            className="img-fluid"
                             src={barca}
                             alt="teamName"
                           />
-                          <span class="team-name">برشلونة</span>
+                          <span className="team-name">برشلونة</span>
                         </div>
                       </div>
 
-                      <div class="bet-points">
-                        <p class="note-text">8400 عملة مراهنة</p>
+                      <div className="bet-points">
+                        <p className="note-text">8400 عملة مراهنة</p>
                       </div>
 
-                      <div class="bet-info">
-                        <div class="info-item">
-                          <div class="item-title">
+                      <div className="bet-info">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -782,10 +783,10 @@ const CurruntBets = () => {
                             </svg>
                             الحصيلة المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -801,10 +802,10 @@ const CurruntBets = () => {
                             </svg>
                             الربح المحتمل
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
-                        <div class="info-item">
-                          <div class="item-title">
+                        <div className="info-item">
+                          <div className="item-title">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -820,15 +821,15 @@ const CurruntBets = () => {
                             </svg>
                             الخسائر المحتملة
                           </div>
-                          <p class="item-val">8400 عملة</p>
+                          <p className="item-val">8400 عملة</p>
                         </div>
                       </div>
 
-                      <div class="action-btns">
-                        <a class="action-btn edit-btn" href="#">
+                      <div className="action-btns">
+                        <a className="action-btn edit-btn" href="#">
                           تعديل
                         </a>
-                        <a class="action-btn del-btn" href="#">
+                        <a className="action-btn del-btn" href="#">
                           حذف
                         </a>
                       </div>
