@@ -5,7 +5,10 @@ import ScorersTap from "../ScorersTap";
 import { useSelector } from "react-redux";
 import { useCreatePredictMutation } from "../../app/server/predictsApi";
 import { useEffect, useState } from "react";
-import { calcCoinsPointSecond, predictionLevels } from "../../data/calcFunctions";
+import {
+  calcCoinsPointSecond,
+  predictionLevels,
+} from "../../data/calcFunctions";
 const Scorers = () => {
   const { betData, chooseScorer } = useSelector((state) => state.betModal);
   const [postScorers, { error, isLoading, data, isSuccess }] =

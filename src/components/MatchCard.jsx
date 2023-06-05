@@ -74,7 +74,7 @@ const MatchCard = ({ item }) => {
 
         {status === "live" || status === "FT" || status === "break" ? (
           <div className="item-result">
-            <span id="">{item.guestTeamResult}</span> :{" "}
+            <span id="">{item.guestTeamResult}</span> :
             <span id="">{item.hostTeamResult}</span>
           </div>
         ) : (
@@ -92,10 +92,7 @@ const MatchCard = ({ item }) => {
       </Link>
 
       <div className="item-left">
-        {status === "live" ||
-        status === "FT" ||
-        status === "cancel" ||
-        status === "break" ? (
+        {item.predict ? (
           <div className="possible-points">
             <img className="item-icon img-fluid" src={points} alt="pointsIMG" />
             <span>8920 نقطة محتملة</span>

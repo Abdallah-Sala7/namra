@@ -1,6 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setDaysTab } from "../app/reducers/appSlice";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+
 const DateRange = () => {
   const dispatch = useDispatch();
   const { daysTab } = useSelector((state) => state.app);
@@ -31,18 +36,35 @@ const DateRange = () => {
     const options = { day: "2-digit", month: "long" };
     const formattedDate = date.toLocaleDateString("en-US", options);
     return (
-      <a
-        className={`tab-btn ${daysTab === date.toISOString().slice(0, 10) ? "active" : ""}`}
-        onClick={(e) => handleDaysTab(e, date)}
-        href="#"
+      <SwiperSlide
         key={date.toISOString()}
+        style={{
+          flexShrink: 1,
+        }}
       >
-        {formattedDate}
-      </a>
+        <a
+          className={`tab-btn ${
+            daysTab === date.toISOString().slice(0, 10) ? "active" : ""
+          }`}
+          onClick={(e) => handleDaysTab(e, date)}
+          href="#"
+        >
+          {formattedDate}
+        </a>
+      </SwiperSlide>
     );
   });
 
-  return <div className="tabs-list">{dateList}</div>;
+  return (
+    <Swiper
+      className="dateSwiper tabs-list"
+      slidesPerView={"auto"}
+      spaceBetween={0}
+      freeMode={true}
+    >
+      {dateList}
+    </Swiper>
+  );
 };
 
 export default DateRange;

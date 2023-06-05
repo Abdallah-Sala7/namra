@@ -8,51 +8,64 @@ import BetMatchResult from "../BetMatchResult";
 import { useSelector } from "react-redux";
 import { useCreatePredictMutation } from "../../app/server/predictsApi";
 import { useEffect, useState } from "react";
-import { calcCoinsPointFirst, predictionLevels } from "../../data/calcFunctions";
+import {
+  calcCoinsPointFirst,
+  predictionLevels,
+} from "../../data/calcFunctions";
 
 const SecondHalfResult = () => {
   const { betData } = useSelector((state) => state.betModal);
   const [postSecondHalfResult, { error, isLoading, data, isSuccess }] =
     useCreatePredictMutation();
 
-  const [hostTeamResult, setHostTeamResult] = useState("");
-  const [guestTeamResult, setGuestTeamResult] = useState("");
+  const [hostTeamResult, setHostTeamResult] = useState(0);
+  const [guestTeamResult, setGuestTeamResult] = useState(0);
   const [coinCount, setCoinCount] = useState(1);
   const [oddsTeamSelcte, setOddsTeamSelcte] = useState(0);
+  const [pointsToWin, setPointsToWin] = useState(0);
+  const [coinsToWin, setCoinsToWin] = useState(0);
 
   const guestOdd = betData.guestOdd;
   const hostOdd = betData.hostOdd;
 
-  const getSecondHalfResult = (hostRes, guestRes) => {
+  const getSecondHalfResult = (hostRes, guestRes, oddSelcte) => {
     setHostTeamResult(parseInt(hostRes));
     setGuestTeamResult(parseInt(guestRes));
-
-    if (hostTeamResult >= guestTeamResult) {
-      setOddsTeamSelcte(betData.guestOdd);
-    } else {
-      setOddsTeamSelcte(betData.hostOdd);
-    }
+    setOddsTeamSelcte(oddSelcte);
   };
 
   const getCoinsValue = (value) => {
     setCoinCount(value);
   };
 
-  const pointsToWin = calcCoinsPointFirst(
-    hostOdd,
-    guestOdd,
-    oddsTeamSelcte,
-    coinCount,
-    predictionLevels.secondHalf
-  ).pointsToWin;
+  useEffect(() => {
+    setPointsToWin(
+      calcCoinsPointFirst(
+        hostOdd,
+        guestOdd,
+        oddsTeamSelcte,
+        coinCount,
+        predictionLevels.secondHalf
+      ).pointsToWin
+    );
 
-  const coinsToWin = calcCoinsPointFirst(
+    setCoinsToWin(
+      calcCoinsPointFirst(
+        hostOdd,
+        guestOdd,
+        oddsTeamSelcte,
+        coinCount,
+        predictionLevels.secondHalf
+      ).coinsToWin
+    );
+  }, [
+    hostTeamResult,
+    guestTeamResult,
+    coinCount,
+    oddsTeamSelcte,
     hostOdd,
     guestOdd,
-    oddsTeamSelcte,
-    coinCount,
-    predictionLevels.secondHalf
-  ).coinsToWin;
+  ]);
 
   function handleSecondHalfResult() {
     if (!isNaN(hostTeamResult) && !isNaN(guestTeamResult)) {
@@ -86,7 +99,7 @@ const SecondHalfResult = () => {
           <div className={`tab-content tab2 active`}>
             <div className="bet-result-box">
               <p className="result-title">نتيجة الشوط الثاني</p>
-              
+
               <BetMatchResult
                 getMatchResult={getSecondHalfResult}
                 betData={betData}

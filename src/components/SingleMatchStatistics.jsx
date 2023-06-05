@@ -1,7 +1,9 @@
 import React from "react";
 import barca from "../assets/img/Barcelona.svg";
+import DefaultImg from "./DefaultImg";
 
-const SingleMatchStatistics = () => {
+const SingleMatchStatistics = ({ matchData }) => {
+  console.log(matchData);
   return (
     <div className="tab-content statistics-tab active">
       <div className="statistics-box">
@@ -10,20 +12,20 @@ const SingleMatchStatistics = () => {
             <tbody>
               <tr>
                 <td>
-                  <img
-                    className="img-fluid"
-                    src={barca}
-                    alt="teamName"
+                  <DefaultImg
+                    imgClass={"img-fluid"}
+                    alt={matchData.hostTeam.name}
+                    src={matchData.hostTeam.logo}
                   />
                 </td>
                 <td>
                   <p className="tabel-td">أحصائيات الفريق</p>
                 </td>
                 <td>
-                  <img
-                    className="img-fluid"
-                    src={barca}
-                    alt="teamName"
+                <DefaultImg
+                    imgClass={"img-fluid"}
+                    alt={matchData.guestTeam.name}
+                    src={matchData.guestTeam.logo}
                   />
                 </td>
               </tr>

@@ -18,6 +18,8 @@ const WinningTeam = () => {
   const [coinCount, setCoinCount] = useState(1);
   const [winingTeamValue, setWiningTeamValue] = useState("");
   const [oddsTeamSelcte, setOddsTeamSelcte] = useState(0);
+  const [pointsToWin, setPointsToWin] = useState(0);
+  const [coinsToWin, setCoinsToWin] = useState(0);
 
   const guestOdd = betData.guestOdd;
   const hostOdd = betData.hostOdd;
@@ -30,22 +32,6 @@ const WinningTeam = () => {
     setWiningTeamValue(value);
     setOddsTeamSelcte(oddSelcte);
   };
-
-  const pointsToWin = calcCoinsPointFirst(
-    hostOdd,
-    guestOdd,
-    oddsTeamSelcte,
-    coinCount,
-    predictionLevels.winner
-  ).pointsToWin;
-
-  const coinsToWin = calcCoinsPointFirst(
-    hostOdd,
-    guestOdd,
-    oddsTeamSelcte,
-    coinCount,
-    predictionLevels.winner
-  ).coinsToWin;
 
   function handleWinngTeam() {
     if (!winingTeamValue.length < 1) {
@@ -71,6 +57,28 @@ const WinningTeam = () => {
       console.log("loading");
     }
   }, [handleWinngTeam]);
+
+  useEffect(() => {
+    setPointsToWin(
+      calcCoinsPointFirst(
+        hostOdd,
+        guestOdd,
+        oddsTeamSelcte,
+        coinCount,
+        predictionLevels.winner
+      ).pointsToWin
+    );
+
+    setCoinsToWin(
+      calcCoinsPointFirst(
+        hostOdd,
+        guestOdd,
+        oddsTeamSelcte,
+        coinCount,
+        predictionLevels.winner
+      ).coinsToWin
+    );
+  }, [coinCount, oddsTeamSelcte, hostOdd, guestOdd, predictionLevels.winner]);
 
   return (
     <>

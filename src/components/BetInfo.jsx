@@ -1,6 +1,6 @@
 import React from "react";
 
-const BetInfo = ({pointsToWin, coinsToWin}) => {
+const BetInfo = ({ pointsToWin, coinsToWin }) => {
   return (
     <div className="row row-cols-md-3 row-cols-sm-2 justify-content-center">
       <div className="row-col">
@@ -46,7 +46,7 @@ const BetInfo = ({pointsToWin, coinsToWin}) => {
           <p className="item-val">{pointsToWin} عملة</p>
         </div>
       </div>
-      
+
       <div className="row-col">
         <div className="info-item">
           <div className="item-title">
@@ -65,7 +65,7 @@ const BetInfo = ({pointsToWin, coinsToWin}) => {
             </svg>
             الخسائر المحتملة
           </div>
-          <p className="item-val">8400 عملة</p>
+          <p className="item-val">-1</p>
         </div>
       </div>
     </div>

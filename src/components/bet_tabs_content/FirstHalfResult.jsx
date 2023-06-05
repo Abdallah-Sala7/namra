@@ -6,7 +6,10 @@ import BetMatchResult from "../BetMatchResult";
 import { useSelector } from "react-redux";
 import { useCreatePredictMutation } from "../../app/server/predictsApi";
 import { useEffect, useState } from "react";
-import { calcCoinsPointFirst, predictionLevels } from "../../data/calcFunctions";
+import {
+  calcCoinsPointFirst,
+  predictionLevels,
+} from "../../data/calcFunctions";
 
 const FirstHalfResult = () => {
   const { betData } = useSelector((state) => state.betModal);
@@ -21,15 +24,10 @@ const FirstHalfResult = () => {
   const guestOdd = betData.guestOdd;
   const hostOdd = betData.hostOdd;
 
-  const getFirstHalfResult = (hostRes, guestRes) => {
+  const getFirstHalfResult = (hostRes, guestRes, oddSelcte) => {
     setHostTeamResult(parseInt(hostRes));
     setGuestTeamResult(parseInt(guestRes));
-
-    if (hostTeamResult >= guestTeamResult) {
-      setOddsTeamSelcte(betData.guestOdd);
-    } else {
-      setOddsTeamSelcte(betData.hostOdd);
-    }
+    setOddsTeamSelcte(oddSelcte);
   };
 
   const getCoinsValue = (value) => {
@@ -84,7 +82,7 @@ const FirstHalfResult = () => {
           <div className={`tab-content tab2 active`}>
             <div className="bet-result-box">
               <p className="result-title">نتيجة الشوط الأول</p>
-              
+
               <BetMatchResult
                 getMatchResult={getFirstHalfResult}
                 betData={betData}

@@ -5,7 +5,6 @@ const initialState = {
   activeTap: "tab1",
   playersData: [],
   chooseScorer: "",
-  isPredicted: false,
 };
 
 export const betSlice = createSlice({
@@ -27,10 +26,6 @@ export const betSlice = createSlice({
     setPlayersData: (state, action) => {
       state.playersData = action.payload;
     },
-
-    setIsPredicted: (state, action) => {
-      state.isPredicted = action.payload;
-    },
   },
 });
 
@@ -39,6 +34,5 @@ export const {
   setChooseScorer,
   setBetData,
   setPlayersData,
-  setIsPredicted,
 } = betSlice.actions;
 export default betSlice.reducer;

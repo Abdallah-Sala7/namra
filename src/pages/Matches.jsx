@@ -17,19 +17,18 @@ import MatchCardLoading from "../components/loading/MatchCardLoading";
 
 const Matches = () => {
   const { daysTab } = useSelector((state) => state.app);
+
   const [allMatchesLeag, setAllMatchesLeag] = useState([]);
   const [matches, setMatches] = useState([]);
 
   const { openModal, matchesTab } = useSelector((state) => state.app);
-  const { data: teamsData, isSuccess: teamSuccess } = useGetGameQuery();
 
-  const today = new Date();
+  const startDay = new Date(daysTab);
+  const nextDay = new Date(startDay);
+  nextDay.setDate(startDay.getDate() + 1);
 
-  const nextDay = new Date(today);
-  nextDay.setDate(today.getDate() + 1);
-
-  const { data: matchesData } = useGetGameByDateQuery({
-    start: today.toISOString().slice(0, 10),
+  const { data: teamsData, isSuccess: teamSuccess } = useGetGameByDateQuery({
+    start: startDay.toISOString().slice(0, 10),
     end: nextDay.toISOString().slice(0, 10),
   });
 

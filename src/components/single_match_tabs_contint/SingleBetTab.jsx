@@ -5,11 +5,8 @@ import { predictionLevels } from "../../data/calcFunctions";
 import SingleBetResult from "./SingleBetResult";
 import SingleScorrers from "./SingleScorrers";
 import { useCreatePredictMutation } from "../../app/server/predictsApi";
-import { useDispatch } from "react-redux";
-import { setIsPredicted } from "../../app/reducers/betSlice";
 
-const SingleBetTab = ({ matchData }) => {
-  const dispatch = useDispatch();
+const SingleBetTab = ({ matchData, handleClick }) => {
   const [postPredictions, { error, isLoading, data, isSuccess }] =
     useCreatePredictMutation();
 
@@ -172,7 +169,7 @@ const SingleBetTab = ({ matchData }) => {
       pointsToLose: 0,
     });
 
-    dispatch(setIsPredicted(true))
+    handleClick();
     e.preventDefault();
   };
 

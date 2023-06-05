@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import coins from "../assets/img/Coin.svg";
 
 const BetCurrency = ({ getCoinsValue }) => {
@@ -6,15 +6,17 @@ const BetCurrency = ({ getCoinsValue }) => {
 
   const increaseCurrencyValue = () => {
     setCurrencyValue(currencyValue + 1);
-    getCoinsValue(currencyValue + 1);
   };
 
   const decreaseCurrencyValue = () => {
     if (currencyValue > 1) {
       setCurrencyValue(currencyValue - 1);
-      getCoinsValue(currencyValue - 1);
     }
   };
+
+  useEffect(() => {
+    getCoinsValue(currencyValue);
+  }, [currencyValue]);
 
   return (
     <>

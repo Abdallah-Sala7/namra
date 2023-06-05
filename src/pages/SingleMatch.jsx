@@ -13,11 +13,15 @@ import SingleMatchStatistics from "../components/SingleMatchStatistics";
 const SingleMatch = () => {
   const param = useParams().id;
   const { data, isLoading } = useGetGameByIdQuery(param);
+  const [isPredicted, setIsPredicted] = useState(false);
 
   const { singleMatchTab } = useSelector((state) => state.app);
-  const { isPredicted } = useSelector((state) => state.betModal);
 
-  if (isLoading)  return <SingleMatchLoading />;
+  const handlePredicted = () => {
+    setIsPredicted(true);
+  };
+
+  if (isLoading) return <SingleMatchLoading />;
   return (
     <div>
       <SingleMatchHead data={data} />
@@ -31,11 +35,11 @@ const SingleMatch = () => {
               <SingleMatchTap />
 
               {singleMatchTab === "bet-tab" ? (
-                <SingleBetTab matchData={data} />
+                <SingleBetTab matchData={data} handleClick={handlePredicted} />
               ) : singleMatchTab === "summary-tab" ? (
                 <SingleMatchSummary data={data} />
               ) : singleMatchTab === "statistics-tab" ? (
-                <SingleMatchStatistics />
+                <SingleMatchStatistics matchData={data} />
               ) : (
                 <SingleBetTab data={data} />
               )}

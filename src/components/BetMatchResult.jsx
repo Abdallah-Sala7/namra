@@ -1,5 +1,4 @@
-import { useState } from "react";
-import barca from "../assets/img/Barcelona.svg";
+import { useEffect, useState } from "react";
 import DefaultImg from "./DefaultImg";
 
 const BetMatchResult = ({ betData, getMatchResult }) => {
@@ -9,12 +8,22 @@ const BetMatchResult = ({ betData, getMatchResult }) => {
   });
 
   const handleChanges = (hostRes, guestRes) => {
-    getMatchResult(hostRes, guestRes);
     setMatchRes({
       hostRes,
       guestRes,
     });
   };
+
+  useEffect(() => {
+    if (matchRes.hostRes > matchRes.guestRes) {
+      getMatchResult(matchRes.hostRes, matchRes.guestRes, betData.hostOdd);
+    } else if (matchRes.hostRes < matchRes.guestRes) {
+      getMatchResult(matchRes.hostRes, matchRes.guestRes, betData.guestOdd);
+    } else {
+      getMatchResult(matchRes.hostRes, matchRes.guestRes, betData.drawOdd);
+    }
+  }, [matchRes]);
+
   return (
     <div className="result-items single-match-area ">
       <div className="bet-types-boxes">
@@ -35,6 +44,7 @@ const BetMatchResult = ({ betData, getMatchResult }) => {
                   type="number"
                   placeholder="-"
                   maxLength="2"
+                  value={matchRes.hostRes}
                   onChange={(e) =>
                     handleChanges(e.target.value, matchRes.guestRes)
                   }
@@ -44,6 +54,7 @@ const BetMatchResult = ({ betData, getMatchResult }) => {
                   type="number"
                   placeholder="-"
                   maxLength="2"
+                  value={matchRes.guestRes}
                   onChange={(e) =>
                     handleChanges(matchRes.hostRes, e.target.value)
                   }

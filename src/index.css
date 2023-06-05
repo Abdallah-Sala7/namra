@@ -4,10 +4,17 @@
 
 @import url("https://fonts.cdnfonts.com/css/almarai");
 
+@import "react-date-range/dist/styles.css";
+@import "react-date-range/dist/theme/default.css";
+
 @font-face {
   font-family: "cairo";
   src: url("./assets/webfonts/cairo.woff2") format("woff2");
   font-weight: 400;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 /* swiper */
@@ -139,6 +146,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 input[type="number"] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
@@ -1146,18 +1154,22 @@ button {
 }
 
 .matches-area .matches-tabs-area .scroll-list {
-  overflow-x: auto;
-  overflow-y: hidden;
   padding-bottom: 0.75rem;
   margin-bottom: 1.25rem;
 }
 
+.matches-area .matches-tabs-area .scroll-list .scroll-list-contint{
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .matches-area .matches-tabs-area .tabs-list {
-  border-bottom: 3px solid var(--clr-txt2);
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  overflow-x: auto;
 }
 
 .matches-area .matches-tabs-area .tabs-list > * {
@@ -1175,7 +1187,6 @@ button {
   color: var(--clr-txt2);
   font-weight: bold;
   position: relative;
-  border: none !important;
 }
 
 .matches-area .matches-tabs-area .tabs-list .tab-btn::after {
@@ -1500,9 +1511,9 @@ button {
   max-width: 180px;
 }
 
-.matches-area .matches-boxes .box-wrap .box-item .item-left > *:first-child {
-  /* margin-bottom: .75rem; */
-}
+/*.matches-area .matches-boxes .box-wrap .box-item .item-left > *:first-child {
+   margin-bottom: .75rem; 
+}*/
 
 .matches-area .matches-boxes .box-wrap .box-item .item-left .possible-points {
   display: flex;
@@ -3109,7 +3120,7 @@ button {
 .matches-area .matches-tabs-area .inside-tabs-area .tabs-list {
   margin: 0 -1rem;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
   border: none;
 }
 
@@ -4900,7 +4911,6 @@ button {
   width: 120px;
 }
 
-
 .single-match-area .team-info .team-img-loading {
   width: 65px;
   height: 65px;
@@ -5708,8 +5718,8 @@ button {
   height: 40px;
 }
 
-.single-match-area .statistics-box .table tr td:nth-child(2) {
-}
+/* .single-match-area .statistics-box .table tr td:nth-child(2) {
+}*/
 
 /*** standings-box ***/
 .single-match-area .standings-box {
@@ -6266,4 +6276,33 @@ button {
 
 .custom-modal .sign-area > *:not(:last-child) {
   margin-bottom: 3rem;
+}
+
+/*********** date picker ***********/
+
+.rdrCalendarWrapper {
+  direction: ltr !important;
+}
+
+.date-range-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 11;
+}
+
+.date-range-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+}
+
+@media (max-width: 767.98px) {
+  .rdrCalendarWrapper{
+    font-size: 11px;
+  }
 }
