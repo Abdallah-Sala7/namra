@@ -45,7 +45,10 @@ const Home = () => {
 
   const { data: teamsData, isSuccess: teamSuccess } = useGetGameByDateQuery({
     start: formatDate(selectionDateRange.start),
-    end: formatDate(selectionDateRange.end),
+    end:
+      selectionDateRange.start === selectionDateRange.end
+        ? ""
+        : formatDate(selectionDateRange.end),
   });
 
   useEffect(() => {
@@ -82,6 +85,8 @@ const Home = () => {
       setMatches(filterData);
     }
   }, [matchesTab, teamsData]);
+
+  console.log(teamsData);
 
   return (
     <>
