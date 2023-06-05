@@ -65,7 +65,7 @@ const SingleBetTabBox = ({
     if (handleChange) {
       handleChange({ coinCount, pointsToWin, coinsToWin });
     }
-  }, [oddSelect, hostOdd, guestOdd, predictionLevel, coinCount, coinsToWin, pointsToWin, oddDraw, handleChange]);
+  }, [oddSelect, hostOdd, guestOdd, predictionLevel, coinCount, oddDraw, coinsToWin, pointsToWin]);
 
   return (
     <div className="box-wrap">
@@ -96,7 +96,7 @@ const SingleBetTabBox = ({
               </div>
               <input
                 className="counter-input"
-                type="text"
+                type="tel"
                 min="1"
                 value={coinCount}
                 onChange={(e) => setCoinCount(e.target.value)}
@@ -175,7 +175,7 @@ const SingleBetTabBox = ({
               </svg>
               الخسائر المحتملة
             </div>
-            <p className="item-val">-1 عملة</p>
+            <p className="item-val">8400 عملة</p>
           </div>
         </div>
       </div>
