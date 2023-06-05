@@ -7,29 +7,27 @@ import LeagResultCard from "../components/LeagResultCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import LeagSwipNav from "../components/LeagSwipNav";
-import { useGetGameByDateQuery, useGetGameQuery } from "../app/server/gameApi";
+import { useGetGameByDateQuery } from "../app/server/gameApi";
 import { useSelector } from "react-redux";
 import BetMatches from "../components/BetMatches";
 import ChooseScorers from "../components/ChooseScorers";
 import { useEffect, useState } from "react";
 import DateRange from "../components/DateRange";
 import MatchCardLoading from "../components/loading/MatchCardLoading";
+import { formatDate } from "../data/calcFunctions";
 
 const Matches = () => {
-  const { daysTab } = useSelector((state) => state.app);
+  const { matchsRange } = useSelector((state) => state.app);
 
   const [allMatchesLeag, setAllMatchesLeag] = useState([]);
   const [matches, setMatches] = useState([]);
 
   const { openModal, matchesTab } = useSelector((state) => state.app);
 
-  const startDay = new Date(daysTab);
-  const nextDay = new Date(startDay);
-  nextDay.setDate(startDay.getDate() + 1);
-
   const { data: teamsData, isSuccess: teamSuccess } = useGetGameByDateQuery({
-    start: startDay.toISOString().slice(0, 10),
-    end: nextDay.toISOString().slice(0, 10),
+    start: formatDate(matchsRange.start),
+    end:
+      matchsRange.start === matchsRange.end ? "" : formatDate(matchsRange.end),
   });
 
   useEffect(() => {
@@ -65,7 +63,7 @@ const Matches = () => {
       );
       setMatches(filterData);
     }
-  }, [matchesTab, teamsData]);
+  }, [matchesTab, teamsData, teamSuccess]);
 
   return (
     <>

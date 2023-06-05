@@ -47,6 +47,10 @@ body[data-panel="noScroll"] {
   overflow-y: hidden;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 * {
   box-sizing: border-box;
   font-family: "cairo", sans-serif;
@@ -1158,7 +1162,7 @@ button {
   margin-bottom: 1.25rem;
 }
 
-.matches-area .matches-tabs-area .scroll-list .scroll-list-contint{
+.matches-area .matches-tabs-area .scroll-list .scroll-list-contint {
   width: 100%;
   overflow-x: auto;
   display: flex;
@@ -6302,7 +6306,7 @@ button {
 }
 
 @media (max-width: 767.98px) {
-  .rdrCalendarWrapper{
+  .rdrCalendarWrapper {
     font-size: 11px;
   }
 }

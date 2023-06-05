@@ -1,6 +1,9 @@
 import { DateRange } from "react-date-range";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectionDateRange } from "../app/reducers/appSlice";
+import {
+  setMatchsRange,
+  setSelectionDateRange,
+} from "../app/reducers/appSlice";
 
 const DatePicker = () => {
   const dispatch = useDispatch();
@@ -10,8 +13,15 @@ const DatePicker = () => {
   const handleDateChange = (item) => {
     dispatch(
       setSelectionDateRange({
-        start: item.selection.startDate.toJSON(),
-        end: item.selection.endDate.toJSON(),
+        start: item.selection.startDate.toDateString(),
+        end: item.selection.endDate.toDateString(),
+      })
+    );
+
+    dispatch(
+      setMatchsRange({
+        start: item.selection.startDate.toDateString(),
+        end: item.selection.endDate.toDateString(),
       })
     );
   };

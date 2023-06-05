@@ -21,6 +21,7 @@ import { useGetGameByDateQuery } from "../app/server/gameApi";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import MatchCardLoading from "../components/loading/MatchCardLoading";
+import { formatDate } from "../data/calcFunctions";
 
 const Home = () => {
   const [allMatchesLeag, setAllMatchesLeag] = useState([]);
@@ -30,18 +31,6 @@ const Home = () => {
     (state) => state.app
   );
   const { data: competition, error, isLoading } = useGetCompetitionQuery();
-
-  function formatDate(date) {
-    var d = new Date(date),
-      month = "" + (d.getMonth() + 1),
-      day = "" + d.getDate(),
-      year = d.getFullYear();
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    return [year, month, day].join("-");
-  }
 
   const { data: teamsData, isSuccess: teamSuccess } = useGetGameByDateQuery({
     start: formatDate(selectionDateRange.start),
@@ -84,9 +73,15 @@ const Home = () => {
       );
       setMatches(filterData);
     }
-  }, [matchesTab, teamsData]);
-
-  console.log(teamsData);
+  }, [matchesTab, teamsData, teamSuccess]);
+  
+  useEffect(()=>{
+    if (openModal) {
+      document.body.classList.add("modal-open");
+    }else{
+      document.body.classList.remove("modal-open");
+    }
+  },[openModal])
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setDaysTab } from "../app/reducers/appSlice";
+import { setDaysTab, setMatchsRange } from "../app/reducers/appSlice";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,7 +11,10 @@ const DateRange = () => {
   const { daysTab } = useSelector((state) => state.app);
 
   const handleDaysTab = (e, date) => {
-    dispatch(setDaysTab(date.toISOString().slice(0, 10)));
+    dispatch(setDaysTab(date.toDateString()));
+    dispatch(
+      setMatchsRange({ start: date.toDateString(), end: date.toDateString() })
+    );
     e.preventDefault();
   };
 
@@ -44,7 +47,7 @@ const DateRange = () => {
       >
         <a
           className={`tab-btn ${
-            daysTab === date.toISOString().slice(0, 10) ? "active" : ""
+            daysTab === date.toDateString() ? "active" : ""
           }`}
           onClick={(e) => handleDaysTab(e, date)}
           href="#"

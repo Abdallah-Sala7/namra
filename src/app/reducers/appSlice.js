@@ -5,10 +5,15 @@ const initialState = {
   openModal: false,
   matchesTab: "all-matches",
   singleMatchTab: "bet-tab",
-  daysTab: new Date().toISOString().slice(0, 10),
+  daysTab: new Date().toDateString(),
   selectionDateRange: {
-    start: new Date().toJSON(),
-    end: new Date().toJSON(),
+    start: new Date().toDateString(),
+    end: new Date().toDateString(),
+  },
+
+  matchsRange: {
+    start: new Date().toDateString(),
+    end: new Date().toDateString(),
   },
 };
 
@@ -39,6 +44,10 @@ export const appSlice = createSlice({
     setSelectionDateRange: (state, action) => {
       state.selectionDateRange = action.payload;
     },
+
+    setMatchsRange: (state, action) => {
+      state.matchsRange = action.payload;
+    }
   },
 });
 
@@ -49,5 +58,6 @@ export const {
   setDaysTab,
   setSingleMatchTab,
   setSelectionDateRange,
+  setMatchsRange
 } = appSlice.actions;
 export default appSlice.reducer;
